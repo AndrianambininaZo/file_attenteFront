@@ -1,15 +1,24 @@
 <div class="login_container">
-    <form>
-        <div class="input_form">
-            <label for="">Email</label>
-            <input type="text" class="form-control" placeholder="user name">
-        </div>
-        <div class="input_form">
-            <label for="">Mot de passe</label>
-            <input type="text" class="form-control" name="" placeholder="password">
-        </div>
-        <div class="input_form">
-            <button class="btn btn-primary">Login</button>
-        </div>
-    </form>
+	<div class="main">
+		<div class="logo"></div>
+		<form [formGroup]="loginForm" (ngSubmit)="authentification()">
+			<div class="input_form">
+				<label for="">Email :</label>
+				<input type="text" class="form-control" placeholder="Votre email" formControlName="username">
+			</div>
+			<div class="input_form">
+				<label for="">Mot de passe :</label>
+				<input type="password" class="form-control" name="" placeholder="Votre mot de passe"
+					formControlName="password">
+			</div>
+			<div class="input_form">
+				<button type="submit" class="btn btn-primary button ">Connexion</button>
+			</div>
+			<div class="footer">
+				<a href="" title="facebook">F</a>
+				<a href="" title="twiter">T</a>
+				<a href="" title="instagrame">I</a>
+			</div>
+		</form>
+	</div>
 </div>

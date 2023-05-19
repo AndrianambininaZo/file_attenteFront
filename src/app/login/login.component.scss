@@ -1,4 +1,4 @@
-.login_container{
+.login_container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6,23 +6,68 @@
     background: url("../../assets/images/photo.jpg") no-repeat;
     background-size: cover;
     width: 100%;
-    form{
-        
-        background: transparent;
-        border:  2px solid rgba(255,255,255,  0.5);
-        backdrop-filter: blur(200px);
-        border-radius: 20px;
-        box-shadow: 0 0 30px rgba(0,0,0, .5);
-        width: 380px;
-        height: 300px;
-        .input_form{
-            margin: 1rem ;
-            input{
-                margin-top: .5rem;
+
+    .main {
+        width: 800px;
+        height: 340px;
+        display: flex;
+        box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+        background-color: transparent rgb(227, 235, 232);
+        padding: 1rem;
+        border-radius: 9px;
+
+        .logo {
+            background: url("../../assets/images/Asosaina.jpg") no-repeat;
+            background-size: cover;
+            width: 380px;
+            height: 300px;
+            border-radius: 9px;
+
+        }
+
+        form {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 0px 9px 9px 0px;
+            width: 380px;
+            height: 300px;
+
+            .input_form {
+                margin: 1rem;
+
+                input {
+                    margin-top: .5rem;
+                }
+
+                .button {
+                    width: 100%;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    font-weight: bold;
+                }
             }
-            button{
-                width: 100%;
+
+            .footer {
+                margin-top: 2rem;
+                margin-left: 1rem;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+
+                a {
+                    background-color: rgb(145, 163, 179);
+                    width: 40px;
+                    height: 40px;
+                    font-weight: bold;
+                    text-decoration: none;
+                    text-align: center;
+                    border-radius: 50%;
+                }
             }
         }
+
     }
+
+
+
+
 }

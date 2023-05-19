@@ -1,28 +1,55 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import{ HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
-import { EcranComponent } from './ecran/ecran.component';
-import { AppelleComponent } from './appelle/appelle.component';
 import { AdminComponent } from './admin/admin.component';
-import { TicketComponent } from './ticket/ticket.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { BodyComponent } from './admin/body/body.component';
+import { NavbarComponent } from './admin/navbar/navbar.component';
+import { SidebarComponent } from './admin/sidebar/sidebar.component';
+import { CreertacheComponent } from './admin/creertache/creertache.component';
+import { DasboardComponent } from './admin/dasboard/dasboard.component';
+import { ListeTachesComponent } from './admin/liste-taches/liste-taches.component';
+import { TacheComponent } from './admin/tache/tache.component';
+import { UtilisateurComponent } from './admin/utilisateur/utilisateur.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { ClientDasboardComponent } from './admin/dasboard/client-dasboard/client-dasboard.component';
+import { BackooficheDasboardComponent } from './admin/dasboard/backoofiche-dasboard/backoofiche-dasboard.component';
+import { ListeOfOfficheComponent } from './admin/liste-of-offiche/liste-of-offiche.component';
+import { ReceptionComponent } from './admin/reception/reception.component';
+import { ReceptionOfOfficheComponent } from './admin/reception-of-offiche/reception-of-offiche.component';
+import { TelechargerOfOfficheComponent } from './admin/telecharger-of-offiche/telecharger-of-offiche.component';
+import { TraitementOfOfficheComponent } from './admin/traitement-of-offiche/traitement-of-offiche.component';
+import { StatistiqueComponent } from './admin/statistique/statistique.component';
+import { LoginForAdminComponent } from './login-for-admin/login-for-admin.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    HeaderComponent,
     LoginComponent,
-    EcranComponent,
-    AppelleComponent,
     AdminComponent,
-    TicketComponent
+    BodyComponent,
+    NavbarComponent,
+    SidebarComponent,
+    CreertacheComponent,
+    DasboardComponent,
+    ListeTachesComponent,
+    TacheComponent,
+    UtilisateurComponent,
+    NotfoundComponent,
+    ForbiddenComponent,
+    ClientDasboardComponent,
+    BackooficheDasboardComponent,
+    ListeOfOfficheComponent,
+    ReceptionComponent,
+    ReceptionOfOfficheComponent,
+    TelechargerOfOfficheComponent,
+    TraitementOfOfficheComponent,
+    StatistiqueComponent,
+    LoginForAdminComponent,
   ],
   imports: [
     BrowserModule,

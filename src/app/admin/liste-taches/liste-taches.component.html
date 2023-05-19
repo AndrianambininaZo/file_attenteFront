@@ -1,0 +1,48 @@
+<div class="container-list">
+    <div class="header-liste">
+        <div class="">
+            <label for="">Par Code:</label>
+            <input type="text" name="" id="" class="form-control" placeholder="Recherche par code">
+        </div>
+        <div class="">
+            <label for="">Par client:</label>
+            <select  class="form-select" (change)="selectByClient($event)">
+                <option value="0">--------client-------</option>
+                <option *ngFor="let item of client" value="{{item.id}}" >{{item.nom}}</option>
+            </select>
+        </div>
+        <div class="">
+            <label for="">Par Status:</label>
+            <select name="" id="" class="form-select">
+                <option value="">--------status-------</option>
+                <option value="En instance">En instance</option>
+                <option value="En instance">En cours</option>
+                <option value="En instance">Traiter</option>
+            </select>
+        </div>              
+    </div>
+    <div class="table">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Code taches</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Client</th>
+                    <th>Priority</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listeOperation ">
+                    <td>{{item.id}}</td>
+                    <td>{{item.codeTache}}</td>
+                    <td>{{item.description}}</td>
+                    <td>{{item.status}}</td>
+                    <td>{{item.user.nom}}</td>
+                    <td>{{item.priority}}</td>                   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

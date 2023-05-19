@@ -1,0 +1,33 @@
+<div class="traitement">
+          
+        <form [formGroup]="formOperation" (ngSubmit)="ajouterTache(formOperation)">
+            <div class="header">
+                <span>Ajouter nouveau taches</span>
+            </div>
+            <div class="form-group">
+                <label for="">Description:</label>
+                <input type="text" class="form-control" placeholder="Description de taches"
+                    formControlName="description">
+            </div>
+            <div class="form-group">
+                <label for="">Priority:</label>
+                <select name="" id="" class="form-select" formControlName="priority">
+                    <option value="Tres urgent">Tres urgent</option>
+                    <option value="Urgent">Urgent</option>
+                    <option value="Moyenne">Moyenne</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">Fichier Doc:</label>
+                <input type="file" accept=".doc,.docx" class="form-control" (change)="onSelectFile($event)">
+            </div>
+            <div class="form-group">
+                <label for="">Band Audio:</label>
+                <input type="file" accept=".mp3" class="form-control" (change)="onSelectFileAudio($event)">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary form-control">Ajouter</button>
+            </div>
+        </form>
+    
+</div>

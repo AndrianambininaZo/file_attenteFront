@@ -1,0 +1,30 @@
+.loginAdmin {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../../assets/images/photo.jpg") no-repeat;
+    background-size: cover;
+
+    form {
+        height: 300px;
+        width: 400px;
+        border-radius: 8px;
+        box-shadow: 3px 3px 3px 3px aliceblue;
+
+        .form-group {
+            margin: 1.5rem;
+            display: flex;
+            flex-direction: column;
+
+            label {
+                font-size: 17px;
+            }
+
+            input {}
+        }
+    }
+
+
+}

@@ -1,0 +1,64 @@
+<div class="container-utilisateur">
+    <div class="table-utilisateur">
+        <div class="header">
+            <span>Liste de tous utilisateur</span>
+            <button type="button" (click)="openModal()">Nouveau</button>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of user | async">
+                    <td>{{item.id}}</td>
+                    <td>{{item.nom}}</td>
+                    <td>{{item.email}}</td>
+                    <td>
+                        <button class="btn" *ngIf="item.status==0" title="Desactiver"
+                            (click)="desactiverCompter(item.id)" style="color:rgb(20, 20, 20);"><i
+                                class="bi bi-toggle-off"></i></button>
+                        <button class="btn" *ngIf="item.status==1" (click)="desactiverCompter(item.id)" title="Activer"
+                            style="color: aqua; "><i class="bi bi-toggle-on"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>        
+    </div>
+    <div class="test" [hidden]="modal">
+        <form [formGroup]="formUtilisateur" (ngSubmit)="enregitrerUtilisateur()">
+            <div class="form-header">
+                <span>Ajou nouveau utilisateur</span>
+            </div>
+            <div class="form-group">
+                <label for="">Nom :</label>
+                <input type="text" formControlName="nom" class="form-control" placeholder="Nom utilisateur">
+            </div>
+            <div class="form-group">
+                <label for="">Email :</label>
+                <input type="text" formControlName="email"  class="form-control" placeholder="Email utilisateur">
+            </div>
+            <div class="form-group">
+                <label for="">Password :</label>
+                <input type="text" formControlName="password"  class="form-control" placeholder="Mot de passe utilisateur">
+            </div>
+            <div class="form-group">
+                <label for="">Role :</label>
+                <select class="form-select" formControlName="role" >
+                    <option value=""></option>
+                    <option value="ADMIN">ADMIN</option>
+                    <option value="BACKOFFICE">BACKOFFICE</option>
+                    <option value="CLIENT">CLIENT</option>
+                </select>
+            </div>
+            <div class="form-group">
+               <button class="btn btn-primary form-control">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+</div>
+

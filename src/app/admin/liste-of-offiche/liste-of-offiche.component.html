@@ -1,0 +1,30 @@
+<div class="listes">
+    <div class="header">
+        <span>Liste de taches disponible</span>
+    </div>
+    <div class="table">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>CodeTaches</th>
+                    <th>Description</th>
+                    <th>Priority</th>
+                    <th>Action</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listeOperation!">
+                    <td>{{item.id}}</td>
+                    <td>{{item.codeTache}}</td>
+                    <td>{{item.description}}</td>
+                    <td>{{item.priority}}</td>
+                    <td>
+                        <button (click)="prendreTaches(item.id)">Prendre</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

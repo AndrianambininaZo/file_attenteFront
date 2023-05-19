@@ -1,0 +1,31 @@
+.taches-container {
+    margin: 1rem;
+
+    .header {
+        display: flex;
+        width: 350px;
+        margin-bottom: 1rem;
+
+        input {}
+
+        i {
+            font-size: 27px;
+        }
+    }
+
+    .table-taches {
+        width: 100%;
+
+        span {
+            font-weight: bold;
+            font-size: 20px;
+            background: rebeccapurple;
+            width: 100%;
+        }
+
+        table {
+            border-radius: 70px;
+            border: solid 1px rgb(212, 196, 228);
+        }
+    }
+}
