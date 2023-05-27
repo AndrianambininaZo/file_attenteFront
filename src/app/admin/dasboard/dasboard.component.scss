@@ -1,25 +1,63 @@
 .containair-dasboard {
     width: 100%;
     height: calc(100vh - 70px);
+    padding: 1rem 1rem 1rem 0rem;
 
     .header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: .5rem;
+        margin-bottom: 1rem;
 
         .sous-menu {
             background-color: transparent;
             box-shadow: 3px 3px whitesmoke;
             border: whitesmoke solid 3px;
             width: 100%;
-            margin: 1rem;
             height: 70px;
+            margin-left: 1.7rem;
 
             .stat-menu {
                 padding: .3rem;
             }
         }
+    }
+
+    .table-liste {
+        margin-left: 1.7rem;
+
+        .header-liste {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: .4em;
+
+            .select {
+                display: flex;
+
+                .inputMois {
+                    margin-right: 1rem;
+                }
+            }
+
+            .stat {
+                span {
+                    margin: 1rem;
+
+                    .mots {
+                        color: rgb(97, 182, 221);
+                        font-weight: bold;
+                    }
+
+                    .page {
+                        color: rgb(97, 182, 221);
+                        ;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+
+        .tableStat {}
     }
 
 }

@@ -9,7 +9,6 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Nom fichier</th>
                     <th>Description</th>
                     <th>Code tache</th>
                     <th>Status</th>
@@ -18,14 +17,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of listeOperation">
-                    <td>{{item.id}}</td>
-                    <td>{{item.fileName}}</td>
+                <tr *ngFor="let item of listeOperation ; let i=index">
+                    <td>{{i + 1}}</td>
                     <td>{{item.description}}</td>
                     <td>{{item.codeTache}}</td>
                     <td >{{item.status  }}</td>
-                    <td *ngIf="item.priority =='Tres urgent'" style="color: red;">{{item.priority}}</td>
-                    <td *ngIf="item.priority =='Urgent'" style="color: rgb(216, 219, 44);">{{item.priority}}</td>
+                    <td *ngIf="item.priority =='1'" style="color: red;">Trés urgent</td>
+                    <td *ngIf="item.priority =='2'" style="color: rgb(233, 236, 20);">Urgent</td>
+                    <td *ngIf="item.priority =='3'" style="color: rgb(44, 62, 219);">Moyenne</td>
                     <td>
                         <button>Modifier</button>
                         <button>Suppimer</button>

@@ -51,7 +51,6 @@ export class TacheComponent implements OnInit {
           this.listeOperation = data
           this.index = data.length
           console.log(this.index)
-
         }
       }
     )

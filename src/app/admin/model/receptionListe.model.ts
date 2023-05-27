@@ -11,7 +11,7 @@ export interface ListeReception {
         fileName: string,
         extDoc: string,
         extAud: string,
-        appUser: {
+        user: {
             id: number,
             nom: string,
             email: string,
@@ -19,7 +19,7 @@ export interface ListeReception {
             role: string,
         }
     };
-    appUser: {
+    user: {
         id: number,
         nom: string,
         email: string,

@@ -15,6 +15,8 @@ class Role {
   styleUrls: ['./utilisateur.component.scss']
 })
 export class UtilisateurComponent implements OnInit {
+  totalPageItems: any;
+  page: number = 1;
   modal: boolean = true;
   formUtilisateur!: FormGroup;
   formModifier!: FormGroup;
@@ -24,7 +26,9 @@ export class UtilisateurComponent implements OnInit {
   user!: Observable<Array<Utilisateur>>
   userModif: Utilisateur = new Utilisateur();
   role: Role = new Role()
-  constructor(private services: UtilisateurService, private fb: FormBuilder, private http: HttpClient) { }
+  constructor(private services: UtilisateurService, private fb: FormBuilder, private http: HttpClient) {
+    this.user = this.services.listUtilisateur();
+  }
 
   ngOnInit(): void {
     this.getUtilisateur();
@@ -34,9 +38,11 @@ export class UtilisateurComponent implements OnInit {
       password: this.fb.control("", [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
       role: this.fb.control("", Validators.required),
     })
+
   }
   getUtilisateur() {
-    this.user = this.services.listUtilisateur();
+    return this.user = this.services.listUtilisateur();
+    ;
   }
   enregitrerUtilisateur() {
     if (this.formUtilisateur.valid) {
@@ -74,6 +80,10 @@ export class UtilisateurComponent implements OnInit {
   }
   openModal() {
     this.modal = false
+  }
+  annuller() {
+    this.formUtilisateur.reset(0);
+    this.modal = true
   }
   desactiverCompter(id: any) {
     const idParse = parseInt(id);

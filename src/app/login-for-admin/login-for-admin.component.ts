@@ -35,7 +35,7 @@ export class LoginForAdminComponent implements OnInit {
             this.authService.setUser(res.user.nom);
             this.authService.setRole(res.user.role[0].nomRole);
             this.authService.setToken(res.jwtToken);
-            this.authService.setIdUser(res.user.role[0].id)
+            this.authService.setIdUser(res.user.id)
             if (res.user.role[0].nomRole == "ADMIN") {
               this.route.navigate(['/my']);
             } else {

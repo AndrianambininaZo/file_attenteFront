@@ -3,23 +3,7 @@
         <div class="">
             <label for="">Par Code:</label>
             <input type="text" name="" id="" class="form-control" placeholder="Recherche par code">
-        </div>
-        <div class="">
-            <label for="">Par client:</label>
-            <select  class="form-select" (change)="selectByClient($event)">
-                <option value="0">--------client-------</option>
-                <option *ngFor="let item of client" value="{{item.id}}" >{{item.nom}}</option>
-            </select>
-        </div>
-        <div class="">
-            <label for="">Par Status:</label>
-            <select name="" id="" class="form-select">
-                <option value="">--------status-------</option>
-                <option value="En instance">En instance</option>
-                <option value="En instance">En cours</option>
-                <option value="En instance">Traiter</option>
-            </select>
-        </div>              
+        </div>                     
     </div>
     <div class="table">
         <table class="table table-bordered">
@@ -34,15 +18,20 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of listeOperation ">
-                    <td>{{item.id}}</td>
+                <tr *ngFor="let item of listeOperation ; let i=index">
+                    <td>{{i + 1 }}</td>
                     <td>{{item.codeTache}}</td>
                     <td>{{item.description}}</td>
                     <td>{{item.status}}</td>
                     <td>{{item.user.nom}}</td>
-                    <td>{{item.priority}}</td>                   
+                    <td *ngIf="item.priority =='1'" style="color: red;">Trés urgent</td>
+                    <td *ngIf="item.priority =='2'" style="color: rgb(233, 236, 20);">Urgent</td>
+                    <td *ngIf="item.priority =='3'" style="color: rgb(44, 62, 219);">Moyenne</td>                  
                 </tr>
             </tbody>
         </table>
+        <div>
+            <button (click)="test()">test</button>
+        </div>
     </div>
 </div>

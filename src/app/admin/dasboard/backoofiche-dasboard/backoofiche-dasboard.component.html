@@ -1,1 +1,29 @@
-<p>backoofiche-dasboard works!</p>
+<div>
+    <div></div>
+    <div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <td>Code taches</td>
+                    <td>Nom client</td>
+                    <td>Email client</td>
+                    <td>Priority</td>
+                    <td>Status</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listereception">
+                    <td>{{item.id}}</td>
+                    <td>{{item.operationEntree.codeTache}}</td>
+                    <td>{{item.operationEntree.user.nom}}</td>
+                    <td>{{item.operationEntree.user.email}}</td>
+                    <td *ngIf="item.operationEntree.priority =='1'" style="color: red;">Trés urgent</td>
+                    <td *ngIf="item.operationEntree.priority =='2'" style="color: rgb(233, 236, 20);">Urgent</td>
+                    <td *ngIf="item.operationEntree.priority =='3'" style="color: rgb(44, 62, 219);">Moyenne</td>
+                    <td>{{item.operationEntree.status}}</td>                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

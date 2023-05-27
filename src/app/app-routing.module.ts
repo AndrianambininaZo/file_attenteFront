@@ -17,9 +17,12 @@ import { TelechargerOfOfficheComponent } from './admin/telecharger-of-offiche/te
 import { TraitementOfOfficheComponent } from './admin/traitement-of-offiche/traitement-of-offiche.component';
 import { AuthGuard } from 'auth-guard';
 import { LoginForAdminComponent } from './login-for-admin/login-for-admin.component';
+import { StatistiqueComponent } from './admin/statistique/statistique.component';
+import { TachesJourComponent } from './admin/taches-jour/taches-jour.component';
+import { FactureComponent } from './admin/facture/facture.component';
 
 const routes: Routes = [
-  { path: "", component: LoginComponent },
+  { path: "", component: LoginComponent, },
   { path: "connexion_arosaina", component: LoginForAdminComponent },
   { path: "forbidden", component: ForbiddenComponent },
   { path: "*", component: NotfoundComponent },
@@ -29,6 +32,9 @@ const routes: Routes = [
       { path: "", component: DasboardComponent },
       { path: "admin/utilisateur", component: UtilisateurComponent },
       { path: "admin/list_tache", component: ListeTachesComponent },
+      { path: "admin/statistique", component: StatistiqueComponent },
+      { path: "admin/list_taches_jour", component: TachesJourComponent },
+      { path: "admin/facture/:id/:mois", component: FactureComponent },
 
       //client
       { path: "client/creer_tache", component: CreertacheComponent },

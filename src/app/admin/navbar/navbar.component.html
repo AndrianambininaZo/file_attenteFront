@@ -24,7 +24,7 @@
             </a>
         </li>
     </ul>
-    <ul class="sidenav-nav" *ngIf="role=='BACKOFFICHE'">
+    <ul class="sidenav-nav" *ngIf="role=='BACKOFFICE'">
         <li class="nav-item" *ngFor="let item of dataBackOffiche">
             <a *ngIf="servi.getMatch(item.role)" class="nav-item-link" [routerLink]="[item.routeLink]"
                 routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">

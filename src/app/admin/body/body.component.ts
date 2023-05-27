@@ -8,9 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class BodyComponent implements OnInit {
   @Input() openNav = false;
   @Input() screenWidth = 0;
-
   constructor() { }
-
   ngOnInit(): void {
   }
   getBody(): string {
@@ -22,5 +20,4 @@ export class BodyComponent implements OnInit {
     }
     return style;
   }
-
 }

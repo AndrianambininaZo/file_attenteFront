@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -26,6 +26,9 @@ import { TelechargerOfOfficheComponent } from './admin/telecharger-of-offiche/te
 import { TraitementOfOfficheComponent } from './admin/traitement-of-offiche/traitement-of-offiche.component';
 import { StatistiqueComponent } from './admin/statistique/statistique.component';
 import { LoginForAdminComponent } from './login-for-admin/login-for-admin.component';
+import { TraitementComponent } from './admin/traitement/traitement.component';
+import { TachesJourComponent } from './admin/taches-jour/taches-jour.component';
+import { FactureComponent } from './admin/facture/facture.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,12 +53,16 @@ import { LoginForAdminComponent } from './login-for-admin/login-for-admin.compon
     TraitementOfOfficheComponent,
     StatistiqueComponent,
     LoginForAdminComponent,
+    TraitementComponent,
+    TachesJourComponent,
+    FactureComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

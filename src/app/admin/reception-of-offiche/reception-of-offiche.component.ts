@@ -22,10 +22,12 @@ export class ReceptionOfOfficheComponent implements OnInit {
     this.getListeReception();
   }
   getListeReception() {
+    console
     this.serviceTraiter.getReceptionTache().subscribe({
       next: (data) => {
-        this.listereception = data.filter((rec: { appUser: { id: any; }; }) => {
-          return rec.appUser?.id == this.idUser
+        console.log(data)
+        this.listereception = data.filter((rec: { user: { id: any; }; operationEntree: { status: string } }) => {
+          return rec.user.id == this.idUser && rec.operationEntree.status != "Traitée";
         })
         console.log(this.listereception)
       }, error: (error) => {

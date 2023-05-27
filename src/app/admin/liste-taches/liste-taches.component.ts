@@ -3,9 +3,7 @@ import { Observable } from 'rxjs';
 import { ListOperation } from 'src/app/admin/model/listeTache.model';
 import { TachesService } from 'src/app/services/taches/taches.service';
 import { Reception } from '../model/reception.model';
-import { type } from 'os';
 import { UtilisateurService } from 'src/app/services/utilisateur/utilisateur.service';
-
 @Component({
   selector: 'app-liste-taches',
   templateUrl: './liste-taches.component.html',
@@ -16,15 +14,11 @@ export class ListeTachesComponent implements OnInit {
   reception: Reception = new Reception();
   client!: any
   inputrechercher!: number
-
   constructor(private sevichetache: TachesService, private user: UtilisateurService) { }
-
   ngOnInit(): void {
     this.getClieent();
     this.getListeTache();
-
   }
-
   getClieent() {
     this.user.listUtilisateur().subscribe(
       {
@@ -39,11 +33,12 @@ export class ListeTachesComponent implements OnInit {
   getListeTache() {
     this.sevichetache.getListe().subscribe({
       next: (data) => {
-        this.listeOperation = data
-
+        this.listeOperation = data.filter((res) => {
+          return res.status != "Traitée";
+        })
       }
     })
-  }
+  }/*
   selectByClient(event: Event) {
     const target = event.target as HTMLInputElement;
     const value = target.value
@@ -61,6 +56,10 @@ export class ListeTachesComponent implements OnInit {
         }
       }
     )
+  }*/
+  test() {
+    const date = new Date();
+    const jour = date.getDate()
+    const dadeVrais = date.toLocaleDateString("fr").replace("/", "-").replace("/", "-");
   }
-
 }

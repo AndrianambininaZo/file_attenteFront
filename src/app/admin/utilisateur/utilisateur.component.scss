@@ -7,15 +7,41 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: .5rem;
+
         }
 
-        table {
-            tbody {
+        .tablee {
+            width: 100%;
+            border: 1px solid gray;
+            border-radius: 9px;
+
+            thead {
                 tr {
-                    td {
+                    border-bottom: solid 3px gray;
+                }
+
+            }
+
+            tbody {
+                margin-top: 2rem;
+
+                tr {
+                    height: 40px;
+                    align-items: center;
+                    border-bottom: solid 1px gray;
+
+                    .button {
+                        display: flex;
+                        height: 30px;
+                        justify-content: start;
+                        align-items: center;
+
                         button {
+                            display: flex;
+
                             i {
-                                font-size: 35px;
+                                height: auto;
+                                font-size: 30px;
                             }
                         }
                     }
@@ -34,21 +60,45 @@
         z-index: 3000;
         top: 0;
 
-
         form {
             width: 400px;
-            padding: 1rem;
-            border: solid 1px white;
-            background-color: aliceblue;
-            box-shadow: 3px 3px 3px 3px white;
-            border-radius: 9px;
+            border-radius: 15px 15px 15px 15px;
+            background-color: white;
+            box-shadow: 0px 3px 3px 3px rgb(219, 221, 223);
+
+            .form-header {
+                background-color: aliceblue;
+                height: 40px;
+                border-radius: 15px 15px 0px 0px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                span {
+                    font-weight: bold;
+                }
+            }
 
             .form-group {
                 margin-top: 1rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
 
                 button {
                     font-weight: bold;
+                    margin-right: 1rem;
                 }
+
+                a {
+                    margin-left: 1rem;
+                }
+            }
+
+            .button {
+                display: flex;
+                padding-bottom: 1rem;
+
+                button {}
             }
         }
     }

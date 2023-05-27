@@ -4,10 +4,12 @@
         <span>Bon courage a votre travail <span class="nomUser">{{nom}}</span></span>
     </div>
     <div class="deconnection">
-        <a *ngIf="role=='CLIENT'" class="deconnexion-btn" (click)="openModaProfil()" title="Deconnecter"><i
-                class="bi bi-box-arrow-right"></i></a>
+        <a *ngIf="role=='CLIENT'" class="deconnexion-btn" (click)="deconnexionClient()" title="Deconnecter"><i
+            class="bi bi-box-arrow-right"></i>
+    </a>
         <a *ngIf="role=='ADMIN' || 'BACKOFFICHE'" class="deconnexion-btn" (click)="deconnexion()" title="Deconnecter"><i
-                class="bi bi-box-arrow-right"></i></a>
+                class="bi bi-box-arrow-right"></i>
+        </a>
         <div [hidden]="!openModal" class="modalProfil">
             <div>saluuuuuuuu</div>
         </div>

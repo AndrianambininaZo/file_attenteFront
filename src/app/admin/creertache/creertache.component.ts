@@ -28,7 +28,7 @@ export class CreertacheComponent implements OnInit {
   ngOnInit(): void {
     this.formOperation = this.fb.group({
       description: this.fb.control("", [Validators.required]),
-      priority: this.fb.control(""),
+      priority: this.fb.control("", [Validators.required]),
     })
   }
   onSelectFile(event: Event) {
