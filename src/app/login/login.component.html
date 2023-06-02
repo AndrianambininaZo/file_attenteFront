@@ -1,7 +1,9 @@
 <div class="login_container">
 	<div class="main">
-		<div class="logo"></div>
 		<form [formGroup]="loginForm" (ngSubmit)="authentification()">
+			<div class="header_form">
+				<span>AROSAINA</span>
+			</div>
 			<div class="input_form">
 				<label for="">Email :</label>
 				<input type="text" class="form-control" placeholder="Votre email" formControlName="username">
@@ -15,9 +17,9 @@
 				<button type="submit" class="btn btn-primary button ">Connexion</button>
 			</div>
 			<div class="footer">
-				<a href="" title="facebook">F</a>
-				<a href="" title="twiter">T</a>
-				<a href="" title="instagrame">I</a>
+				<a href="" title="facebook"><i class=" bi bi-facebook"></i></a>
+				<a href="" title="whatsapp"><i class=" bi bi-whatsapp"></i></a>
+				<a href="" title="facebook"><i class=" bi bi-facebook"></i></a>
 			</div>
 		</form>
 	</div>

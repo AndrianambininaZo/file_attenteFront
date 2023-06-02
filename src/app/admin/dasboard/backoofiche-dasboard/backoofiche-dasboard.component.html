@@ -1,6 +1,13 @@
-<div>
-    <div></div>
-    <div>
+<div class="offiche">
+    <div class="header">
+        <select  class="form-select" (change)="selectByMois($event)">
+            <option *ngFor="let item of mois" value="{{item.id}}" >{{item.mois}}</option>
+          </select>
+          <select name="" id="" class="form-select">
+            <option value="item" *ngFor="let item of annee">{{item}}</option>
+          </select>       
+    </div>
+    <div class="liste-table">
         <table class="table table-bordered">
             <thead>
                 <tr>

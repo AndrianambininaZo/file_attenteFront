@@ -32,14 +32,20 @@ export class LoginForAdminComponent implements OnInit {
       this.services.authentificationIsAdmin(this.login).subscribe({
         next: (res) => {
           if (res.user.status == 1) {
-            this.authService.setUser(res.user.nom);
-            this.authService.setRole(res.user.role[0].nomRole);
-            this.authService.setToken(res.jwtToken);
-            this.authService.setIdUser(res.user.id)
             if (res.user.role[0].nomRole == "ADMIN") {
+              this.authService.setUser(res.user.nom);
+              this.authService.setRole(res.user.role[0].nomRole);
+              this.authService.setToken(res.jwtToken);
+              this.authService.setIdUser(res.user.id)
               this.route.navigate(['/my']);
-            } else {
+            } else if (res.user.role[0].nomRole == "BACKOFFICE") {
+              this.authService.setUser(res.user.nom);
+              this.authService.setRole(res.user.role[0].nomRole);
+              this.authService.setToken(res.jwtToken);
+              this.authService.setIdUser(res.user.id)
               this.route.navigate(['/my/backoffice']);
+            } else {
+              return;
             }
           }
         }, error: (err) => {

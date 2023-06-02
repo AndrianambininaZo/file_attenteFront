@@ -32,6 +32,9 @@ export class TraiterService {
   public telechargerDoc(id: number): Observable<any> {
     return this.http.get(environment.backEndHost + "/api/telechargerDoc/" + id, { headers: this.heders(), observe: 'response', responseType: 'blob' });
   }
+  public telechargerDocTraiter(id: number): Observable<any> {
+    return this.http.get(environment.backEndHost + "/api/telechargerDocTraitee/" + id, { headers: this.heders(), observe: 'response', responseType: 'blob' });
+  }
   public telechargerAudio(id: number): Observable<any> {
     return this.http.get(environment.backEndHost + "/api/telechargerAudio/" + id, { headers: this.heders(), observe: 'response', responseType: 'blob' });
   }

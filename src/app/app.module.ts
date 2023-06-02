@@ -29,6 +29,10 @@ import { LoginForAdminComponent } from './login-for-admin/login-for-admin.compon
 import { TraitementComponent } from './admin/traitement/traitement.component';
 import { TachesJourComponent } from './admin/taches-jour/taches-jour.component';
 import { FactureComponent } from './admin/facture/facture.component';
+import { RouterModule } from '@angular/router';
+const routes = [
+  { path: 'admin/facture', component: FactureComponent },
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +66,8 @@ import { FactureComponent } from './admin/facture/facture.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

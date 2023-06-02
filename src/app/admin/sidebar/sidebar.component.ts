@@ -24,7 +24,7 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    console.log(this.role)
   }
   openModaProfil(): void {
     localStorage.clear();
@@ -36,7 +36,7 @@ export class SidebarComponent implements OnInit {
     this.route.navigate(['/connexion_arosaina'])
   }
   deconnexionClient() {
-    alert('client')
-  }
+    this.route.navigate(['/'])
 
+  }
 }

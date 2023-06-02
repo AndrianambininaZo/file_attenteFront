@@ -34,7 +34,7 @@ const routes: Routes = [
       { path: "admin/list_tache", component: ListeTachesComponent },
       { path: "admin/statistique", component: StatistiqueComponent },
       { path: "admin/list_taches_jour", component: TachesJourComponent },
-      { path: "admin/facture/:id/:mois", component: FactureComponent },
+      { path: "admin/facture", component: FactureComponent },
 
       //client
       { path: "client/creer_tache", component: CreertacheComponent },

@@ -1,7 +1,7 @@
 <div class="taches-container">
     <div class="header">
-        <input type="text" class="form-control" (keyup)="getKey($event)" placeholder="Recherche par file name ou description">
-        <i class="bi bi-check-square incon"></i>
+        <input type="text"  (keyup)="getKey($event)" placeholder="Recherche par code tache">
+        <i class="bi bi-search incon"></i>
     </div>
     <div class="table-taches">
         <span>Liste de mon tache</span>
@@ -26,7 +26,6 @@
                     <td *ngIf="item.priority =='2'" style="color: rgb(233, 236, 20);">Urgent</td>
                     <td *ngIf="item.priority =='3'" style="color: rgb(44, 62, 219);">Moyenne</td>
                     <td>
-                        <button>Modifier</button>
                         <button>Suppimer</button>
                     </td>
                 </tr>

@@ -10,10 +10,35 @@ import { UtilisateurAuthService } from 'src/app/services/utilisateur/utilisateur
 })
 export class BackooficheDasboardComponent implements OnInit {
   listereception!: Array<ListeReception>
-
+  mois: any = []
+  moi!: number
+  annee: any = []
   role: any = this.utilisateurService.getRole();
   idUser: any = this.utilisateurService.getIdUser();
-  constructor(private utilisateurService: UtilisateurAuthService, private serviceTraiter: TraiterService) { }
+  constructor(private utilisateurService: UtilisateurAuthService, private serviceTraiter: TraiterService) {
+    this.moi = new Date().getMonth()
+    let annee = new Date().getFullYear();
+    this.annee = [annee, annee - 1]
+    let mois = [
+      { id: 0, mois: "janvier" },
+      { id: 1, mois: "Fevirer" },
+      { id: 2, mois: "Mars" },
+      { id: 3, mois: "Avril" },
+      { id: 4, mois: "Mai" },
+      { id: 5, mois: "Juin" },
+      { id: 6, mois: "Juiller" },
+      { id: 7, mois: "Aout" },
+      { id: 8, mois: "Septebre" },
+      { id: 9, mois: "Octobre" },
+      { id: 10, mois: "Novembre" },
+      { id: 11, mois: "Decembre" },
+    ]
+    this.mois = mois.filter(re => {
+      return re.id != this.moi
+    })
+    const nomMois = mois[this.moi]
+    this.mois.unshift(nomMois)
+  }
 
   ngOnInit(): void {
     this.getListeReception();
@@ -31,6 +56,9 @@ export class BackooficheDasboardComponent implements OnInit {
         console.log(error)
       }
     })
+  }
+  selectByMois(event: Event) {
+
   }
 
 }

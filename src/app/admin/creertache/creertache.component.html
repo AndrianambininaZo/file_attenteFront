@@ -2,11 +2,11 @@
           
         <form [formGroup]="formOperation" (ngSubmit)="ajouterTache(formOperation)">
             <div class="header">
-                <span>Ajouter nouveau taches</span>
+                <span>Ajouter nouveau tache</span>
             </div>
             <div class="form-group">
                 <label for="">Description:</label>
-                <input type="text" class="form-control" placeholder="Description de taches"
+                <input type="text" class="form-control" placeholder="Description de tache"
                     formControlName="description">
             </div>
             <div class="form-group">
@@ -26,7 +26,7 @@
                 <input type="file" accept=".mp3" class="form-control" (change)="onSelectFileAudio($event)">
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary form-control">Ajouter</button>
+                <button type="submit" class="btn btn-primary">Ajouter</button>
             </div>
         </form>
     

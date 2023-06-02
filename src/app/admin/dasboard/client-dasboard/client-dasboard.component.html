@@ -1,12 +1,34 @@
-<table style="width:100%" class="table table-bordered">
-    <tr>
-      <th>Name</th>
-      <th >Telephone</th>
-      <th >Telephone</th>
-    </tr>
-    <tr>
-        <td style="border: none;"></td>
-        <td style="border: none;"></td>
-        <td style="border: soli 1px black;">55577855</td>     
-    </tr>
-  </table>
+<div class="client">
+    <div class="header">
+      <div class="form-group">
+          <select  class="form-select" (change)="selectByMois($event)">
+            <option *ngFor="let item of mois" value="{{item.id}}" >{{item.mois}}</option>
+          </select>
+          <select name="" id="" class="form-select">
+            <option value="">2023</option>
+          </select>
+      </div>
+    </div>
+    <div class="liste">
+        <table class="table table-bordered">
+          <thead>
+              <tr>
+                  <th>#</th>
+                  <th>Code tache</th>
+                  <th>Status</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of listeTraitement ; let i=index">
+                  <td>{{i + 1 }}</td>
+                  <td>{{item.reception.operationEntree.codeTache }}</td>
+                  <td>{{item.reception.operationEntree.status }}</td>
+                  <td>
+                    <button class="btn btn-success btn-sm" (click)="telechargeFile(item.id,item.reception.operationEntree.codeTache)"><i class="bi bi-filetype-docx"></i>Telecharger</button>
+                  </td>                
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>

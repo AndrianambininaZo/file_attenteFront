@@ -5,10 +5,13 @@ export class Traitemment {
     idReception?: number;
 }
 export interface ListTraitement {
+    status: string;
     id?: number;
     page?: string;
     mots?: string;
-    reception?: {
+    mois?: number;
+    annee?: number;
+    reception: {
         id: number,
         dateReception: Date,
         user: {

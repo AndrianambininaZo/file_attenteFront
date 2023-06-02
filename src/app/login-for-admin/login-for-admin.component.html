@@ -1,16 +1,26 @@
-<div class="loginAdmin">
-    <form [formGroup]="loginForm" (ngSubmit)="authentification()">
-        <div class="form-group">
-            <label for="form-label">Email :</label>
-            <input type="text" name="" id="" placeholder="Votre email" class="form-control" formControlName="username">
-        </div>
-        <div class="form-group">
-            <label for="form-label">Mot de passe :</label>
-            <input type="text" name="" id="" placeholder="Votre mot de passe" class="form-control"
-                formControlName="password">
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary form-control">Connexion</button>
-        </div>
-    </form>
+<div class="login_container">
+	<div class="main">
+		<form [formGroup]="loginForm" (ngSubmit)="authentification()">
+			<div class="header_form">
+				<span>AROSAINA</span>
+			</div>
+			<div class="input_form">
+				<label for="">Email :</label>
+				<input type="text" class="form-control" placeholder="Votre email" formControlName="username">
+			</div>
+			<div class="input_form">
+				<label for="">Mot de passe :</label>
+				<input type="password" class="form-control" name="" placeholder="Votre mot de passe"
+					formControlName="password">
+			</div>
+			<div class="input_form">
+				<button type="submit" class="btn btn-primary button ">Connexion</button>
+			</div>
+			<div class="footer">
+				<a href="" title="facebook"><i class=" bi bi-facebook"></i></a>
+				<a href="" title="whatsapp"><i class=" bi bi-whatsapp"></i></a>
+				<a href="" title="facebook"><i class=" bi bi-facebook"></i></a>
+			</div>
+		</form>
+	</div>
 </div>

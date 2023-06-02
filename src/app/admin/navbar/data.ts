@@ -1,13 +1,13 @@
 export const navData = [
     {
         routeLink: "/my",
-        icon: "bi bi-journal",
+        icon: "bi bi-house",
         label: "Dasboard",
         role: "ADMIN"
     },
     {
         routeLink: "/my/admin/statistique",
-        icon: "bi bi-journal",
+        icon: "bi bi-clipboard-data",
         label: "Statistique",
         role: "ADMIN"
     },
@@ -19,13 +19,13 @@ export const navData = [
     },
     {
         routeLink: "/my/admin/list_tache",
-        icon: "bi bi-check-square",
+        icon: "bi bi-list-task",
         label: "List tache",
         role: "ADMIN"
     },
     {
         routeLink: "/admin/facturation",
-        icon: "bi bi-plus-square-fill",
+        icon: "bi bi-receipt",
         label: "Facture",
         role: "ADMIN"
     },
@@ -34,13 +34,13 @@ export const navData = [
 export const navClient = [
     {
         routeLink: "/my/client",
-        icon: "bi bi-journal",
+        icon: "bi bi-house",
         label: "Dasboard",
         role: "CLIENT"
     },
     {
         routeLink: "/my/client/tache",
-        icon: "bi bi-check-square",
+        icon: "bi bi-list-task",
         label: "Tache",
         role: "CLIENT"
     },
@@ -54,21 +54,21 @@ export const navClient = [
 export const navBackOffiche = [
     {
         routeLink: "/my/backoffice",
-        icon: "bi bi-journal",
+        icon: "bi bi-house",
         label: "Dasboard",
         role: "BACKOFFICE"
     },
 
     {
         routeLink: "/my/offiche/list_tache",
-        icon: "bi bi-check-square",
+        icon: "bi bi-list-task",
         label: "List tache",
         role: "BACKOFFICE"
     },
     {
         routeLink: "/my/offiche/tache",
         icon: "bi bi-check-square",
-        label: "Taches",
+        label: "Tache",
         role: "BACKOFFICE"
     },
 

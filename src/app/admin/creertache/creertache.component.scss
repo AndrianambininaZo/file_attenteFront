@@ -14,6 +14,7 @@
         border-radius: 15px 15px 15px 15px;
         background-color: white;
         box-shadow: 3px 3px 3px 3px rgb(219, 221, 223);
+        padding-bottom: 1rem;
 
         .header {
             display: flex;
@@ -31,6 +32,8 @@
 
             button {
                 font-size: 20px;
+                width: 100%;
+                margin-bottom: 1rem;
             }
 
         }

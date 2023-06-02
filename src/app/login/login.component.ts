@@ -62,14 +62,14 @@ export class LoginComponent implements OnInit {
       this.services.authentification(this.login).subscribe({
         next: (res) => {
           if (res.user.status == 1) {
-            console.log(res)
-            this.authService.setUser(res.user.nom);
-            this.authService.setRole(res.user.role[0].nomRole);
-            this.authService.setToken(res.jwtToken);
-            this.authService.setIdUser(res.user.id)
             if (res.user.role[0].nomRole == "CLIENT") {
+              this.authService.setUser(res.user.nom);
+              this.authService.setRole(res.user.role[0].nomRole);
+              this.authService.setToken(res.jwtToken);
+              this.authService.setIdUser(res.user.id)
               this.route.navigate(['/my/client']);
             } else {
+              alert("salut")
               return;
             }
           }

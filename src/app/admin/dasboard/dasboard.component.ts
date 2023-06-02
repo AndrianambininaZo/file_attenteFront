@@ -90,6 +90,7 @@ export class DasboardComponent implements OnInit {
     this.servicetraiter.listeTraitementByclient().subscribe(
       {
         next: (data) => {
+          console.log(data)
           this.listeTache = data.filter((res: { mois: number; "": any; }) => {
             return res.mois == this.moi
           })
@@ -119,7 +120,7 @@ export class DasboardComponent implements OnInit {
       }
     )
   }
-  redirectfacture(idUser: number) {
-    this.route.navigateByUrl("/my/admin/facture/" + idUser + "/" + this.moi)
+  redirectfacture(idUser: number, annee: number) {
+    this.route.navigateByUrl("/my/admin/facture?id=" + idUser + "&idUser=" + this.moi + "&annee=" + annee)
   }
 }

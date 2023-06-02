@@ -21,7 +21,7 @@ export class TacheComponent implements OnInit {
   constructor(private serviceTache: TachesService, private utilisateurServices: UtilisateurAuthService) { }
 
   ngOnInit(): void {
-    this.getTacges();
+    this.getTaches();
 
 
 
@@ -34,21 +34,23 @@ export class TacheComponent implements OnInit {
       {
         next: (data) => {
           if (this.inputrechercher) {
-            this.listeOperation = data.filter(re => re.description.toLowerCase().includes(this.inputrechercher.toLowerCase()) || re.codeTache.toLowerCase().includes(this.inputrechercher.toLowerCase()))
+            this.listeOperation = data.filter(re => re.status != "Traitée" && re.codeTache.toLowerCase().includes(this.inputrechercher.toLowerCase()))
             this.index = this.listeOperation.length
             console.log(this.index)
-          } else this.listeOperation = data
+          } else this.listeOperation = data.filter(re => re.status != "Traitée")
         }, error: (error) => {
 
         }
       }
     );
   }
-  getTacges() {
+  getTaches() {
     this.serviceTache.getListeByClient(this.idUser).subscribe(
       {
         next: (data) => {
-          this.listeOperation = data
+          this.listeOperation = data.filter((res) => {
+            return res.status != "Traitée"
+          })
           this.index = data.length
           console.log(this.index)
         }

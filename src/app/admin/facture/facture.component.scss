@@ -1,0 +1,32 @@
+.facture {
+    margin: 1rem;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+
+        .select {
+            display: flex;
+
+            .form-group2 {
+                margin-left: .7rem;
+            }
+
+        }
+
+        .button-excel {
+            display: flex;
+            flex-direction: column;
+        }
+
+    }
+
+    .liste {
+        margin-top: 1rem;
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+    }
+}
