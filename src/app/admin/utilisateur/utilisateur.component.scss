@@ -10,39 +10,26 @@
 
         }
 
-        .tablee {
-            width: 100%;
-            border: 1px solid gray;
-            border-radius: 9px;
+        table {
 
-            thead {
-                tr {
-                    border-bottom: solid 3px gray;
-                }
-
-            }
+            thead {}
 
             tbody {
-                margin-top: 2rem;
 
                 tr {
-                    height: 40px;
-                    align-items: center;
-                    border-bottom: solid 1px gray;
 
-                    .button {
-                        display: flex;
-                        height: 30px;
-                        justify-content: start;
-                        align-items: center;
+                    td {
 
                         button {
-                            display: flex;
+                            font-size: 20px;
 
-                            i {
-                                height: auto;
-                                font-size: 30px;
-                            }
+                            i {}
+                        }
+
+                        button[title]::before {
+                            background-color: yellow;
+                            color: black;
+                            font-weight: bold;
                         }
                     }
                 }

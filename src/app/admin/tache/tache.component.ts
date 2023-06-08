@@ -6,6 +6,7 @@ import { UtilisateurService } from 'src/app/services/utilisateur/utilisateur.ser
 import { UtilisateurAuthService } from 'src/app/services/utilisateur/utilisateur-auth.service';
 import { error } from 'console';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-tache',
@@ -21,10 +22,10 @@ export class TacheComponent implements OnInit {
   constructor(private serviceTache: TachesService, private utilisateurServices: UtilisateurAuthService) { }
 
   ngOnInit(): void {
+    interval(1000).subscribe(() => {
+
+    })
     this.getTaches();
-
-
-
   }
   getKey(event: Event) {
     const target = event.target as HTMLInputElement;

@@ -1,18 +1,19 @@
-<div class="statistique">
-    <div class="header">        
-        <div class="select">            
-            <select  class="form-select selectMois" (change)="selectByMois($event)">
-                <option *ngFor="let item of mois" value="{{item.id}}" >{{item.mois}}</option>
-            </select> 
-            <select  class="form-select inputMois" (change)="selectByAnnee($event)">
-                <option *ngFor="let item of annees" value="{{item}}" >{{item}}</option>
-            </select>          
-            <!--<input type="date" class="form-control selectDate" (change)="selectDate($event)">-->
-        </div>
-        <div class="cout">
-            <span>Total mots: {{totalByClient}}</span>
-            <span class="page">Total page: {{totalPageByClient}}</span>
-        </div>
+<div class="tous">
+    <div class="header">
+        <div class="heder-left">
+            <input type="text" placeholder="Recher code tache ex: 2023_00001" class="form-control" (keyup)="rechercheByCode($event)">
+            <div class="select">
+                <select  class="form-select inputMois" (change)="selectByAnnee($event)">
+                    <option *ngFor="let item of annees" value="{{item}}" >{{item}}</option>
+                </select>  
+            </div>  
+        </div> 
+        <div class="heder-rigth">
+            <div class="span">
+                <span>Mots: <span class="cout">{{totalByClient}}</span></span>
+                <span>Pages: <span class="cout">{{totalPageByClient}}</span></span>
+            </div>
+        </div>      
     </div>
     <div class="table">
         <table class="table table-bordered">

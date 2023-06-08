@@ -4,7 +4,7 @@
             <span>Liste de tous utilisateur</span>
             <button class="btn btn-success" type="button" (click)="openModal()"><i class="bi bi-person-fill-add"></i> Nouveau</button>
         </div>
-        <table class="tablee">
+        <table class="table table-group-divider">
             <thead>
                 <tr>
                     <th>#</th>
@@ -14,11 +14,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of user | async paginate:{itemsPerPage:3,currentPage:page,totalItems:totalPageItems}">
+                <tr *ngFor="let item of user | paginate:{itemsPerPage:7,currentPage:page,totalItems:totalPageItems}">
                     <td>{{item.id}}</td>
                     <td>{{item.nom}}</td>
                     <td>{{item.email}}</td>
-                    <td class="button">
+                    <td>
                         <button class="btn btn-sm" *ngIf="item.status==0" style="color: aquamarine;" title="Desactiver"
                             (click)="desactiverCompter(item.id)" ><i
                                 class="bi bi-toggle-off"></i></button>
@@ -63,6 +63,6 @@
                <a class="btn btn-danger form-control" (click)="annuller()">Annuller</a>
             </div>
         </form>
-    </div>
+    </div>    
 </div>
 

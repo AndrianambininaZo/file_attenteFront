@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TraiterService } from 'src/app/services/traiter/traiter.service';
 import { ListeReception } from '../../model/receptionListe.model';
 import { UtilisateurAuthService } from 'src/app/services/utilisateur/utilisateur-auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-backoofiche-dasboard',
@@ -9,16 +10,22 @@ import { UtilisateurAuthService } from 'src/app/services/utilisateur/utilisateur
   styleUrls: ['./backoofiche-dasboard.component.scss']
 })
 export class BackooficheDasboardComponent implements OnInit {
+  totalPageItems: any;
+  page: number = 1;
   listereception!: Array<ListeReception>
   mois: any = []
   moi!: number
-  annee: any = []
+  annee!: number
+  annees: any = []
   role: any = this.utilisateurService.getRole();
   idUser: any = this.utilisateurService.getIdUser();
-  constructor(private utilisateurService: UtilisateurAuthService, private serviceTraiter: TraiterService) {
+  lengthByMois!: number
+  isLoggedIn!: boolean
+  constructor(private route: Router, private utilisateurService: UtilisateurAuthService, private serviceTraiter: TraiterService) {
+    this.isLoggedIn = utilisateurService.isLoggeInBackOffice()
     this.moi = new Date().getMonth()
-    let annee = new Date().getFullYear();
-    this.annee = [annee, annee - 1]
+    this.annee = new Date().getFullYear();
+    this.annees = [this.annee, this.annee - 1]
     let mois = [
       { id: 0, mois: "janvier" },
       { id: 1, mois: "Fevirer" },
@@ -41,23 +48,72 @@ export class BackooficheDasboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.isLoggedIn) {
+      this.route.navigateByUrl("/connexion_arosaina")
+    }
     this.getListeReception();
   }
   getListeReception() {
-    console
     this.serviceTraiter.getReceptionTache().subscribe({
       next: (data) => {
-        console.log(data)
-        this.listereception = data.filter((rec: { user: { id: any; }; operationEntree: { status: string } }) => {
-          return rec.user.id == this.idUser && rec.operationEntree.status == "Traitée";
+
+        this.listereception = data.filter((rec: {
+          dateReception: any; user: { id: any; }; operationEntree: { status: string }
+        }) => {
+          let rec_mois = new Date(rec.dateReception).getMonth();
+          let rec_annee = new Date(rec.dateReception).getFullYear();
+          return rec_mois == this.moi && rec_annee == this.annee && rec.user.id == this.idUser && rec.operationEntree.status == "Traitée";
         })
-        console.log(this.listereception)
+        this.lengthByMois = this.listereception.length
+      }, error: (error) => {
+        console.log(error)
+      }
+    })
+  }
+  selectByAnnee(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const value = target.value
+    this.annee = parseInt(value)
+    console.log(this.annee)
+    this.serviceTraiter.getReceptionTache().subscribe({
+      next: (data) => {
+
+        this.listereception = data.filter((rec: {
+          dateReception: any; user: { id: any; }; operationEntree: { status: string }
+        }) => {
+
+          let rec_mois = new Date(rec.dateReception).getMonth();
+          let rec_annee = new Date(rec.dateReception).getFullYear();
+
+          return rec_mois == this.moi && rec_annee == this.annee && rec.user.id == this.idUser && rec.operationEntree.status == "Traitée";
+        })
+        this.lengthByMois = this.listereception.length
       }, error: (error) => {
         console.log(error)
       }
     })
   }
   selectByMois(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const value = target.value
+    this.moi = parseInt(value)
+    this.serviceTraiter.getReceptionTache().subscribe({
+      next: (data) => {
+
+        this.listereception = data.filter((rec: {
+          dateReception: any; user: { id: any; }; operationEntree: { status: string }
+        }) => {
+
+          let rec_mois = new Date(rec.dateReception).getMonth();
+          let rec_annee = new Date(rec.dateReception).getFullYear();
+
+          return rec_mois == this.moi && rec_annee == this.annee && rec.user.id == this.idUser && rec.operationEntree.status == "Traitée";
+        })
+        this.lengthByMois = this.listereception.length
+      }, error: (error) => {
+        console.log(error)
+      }
+    })
 
   }
 

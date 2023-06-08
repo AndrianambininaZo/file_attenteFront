@@ -12,9 +12,9 @@ export const navData = [
         role: "ADMIN"
     },
     {
-        routeLink: "/my/admin/utilisateur",
-        icon: "bi bi-file-person-fill",
-        label: "Utilisateur",
+        routeLink: "/my/admin/list_tous",
+        icon: "bi bi-clipboard-data",
+        label: "Tous",
         role: "ADMIN"
     },
     {
@@ -24,9 +24,33 @@ export const navData = [
         role: "ADMIN"
     },
     {
+        routeLink: "/my/admin/list_encours",
+        icon: "bi bi-list-task",
+        label: "En cours",
+        role: "ADMIN"
+    },
+    {
+        routeLink: "/my/admin/list_validation",
+        icon: "bi bi-list-task",
+        label: "Validation",
+        role: "ADMIN"
+    },
+    {
+        routeLink: "/my/admin/utilisateur",
+        icon: "bi bi-file-person-fill",
+        label: "Utilisateur",
+        role: "ADMIN"
+    },
+    {
         routeLink: "/admin/facturation",
         icon: "bi bi-receipt",
         label: "Facture",
+        role: "ADMIN"
+    },
+    {
+        routeLink: "/admin/facturation",
+        icon: "bi bi-receipt",
+        label: "Parametre",
         role: "ADMIN"
     },
 

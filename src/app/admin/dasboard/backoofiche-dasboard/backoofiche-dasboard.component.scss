@@ -3,6 +3,29 @@
 
     .header {
         display: flex;
-        width: 50%;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .header-left {
+            display: flex;
+            width: 50%;
+
+            .form-moi {
+                margin-right: 1rem;
+            }
+
+        }
+
+        .header-right {
+            span {
+                font-weight: bold;
+
+                span {
+                    color: blue;
+                }
+            }
+        }
+
     }
 }

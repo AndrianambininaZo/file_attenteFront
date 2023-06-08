@@ -10,7 +10,6 @@ import { UtilisateurAuthService } from './utilisateur-auth.service';
   providedIn: 'root'
 })
 export class UtilisateurService {
-
   token!: string
   constructor(private http: HttpClient, private servicesAuth: UtilisateurAuthService) {
     this.token = servicesAuth.getToken();
@@ -22,14 +21,20 @@ export class UtilisateurService {
     )
   }
   public enregistrerUtilisateur(utilisateur: UtilisateurRequest): Observable<any> {
+    console.log(this.token)
+    console.log(this.heders())
     return this.http.post(environment.backEndHost + "/api/utilisateur", utilisateur, { headers: this.heders() });
   }
-  public ajouerRoleByUser(formRoleByUser: addRoleByUserRequest): Observable<any> {
-    return this.http.post(environment.backEndHost + "/api/utilisateur/addRole", formRoleByUser, { headers: this.heders() });
+  public ajouterRoleByUser(formRoleByUser: addRoleByUserRequest): Observable<any> {
+    console.log(this.token)
+    console.log(this.heders())
+
+    return this.http.post(environment.backEndHost + "/api/addRole", formRoleByUser, { headers: this.heders() });
   }
-  public listUtilisateur(): Observable<Array<Utilisateur>> {
-    return this.http.get<Array<Utilisateur>>(environment.backEndHost + "/api/utilisateur", { headers: this.heders() });
+  public listUtilisateur(): Observable<any> {
+    return this.http.get(environment.backEndHost + "/api/utilisateur", { headers: this.heders() });
   }
+
   public authentification(login: Login): Observable<any> {
     return this.http.post(environment.backEndHost + "/connexion", login);
   }

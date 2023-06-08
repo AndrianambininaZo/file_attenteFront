@@ -34,14 +34,26 @@
             .select {
                 display: flex;
 
-                .inputMois {
-                    margin-right: 1rem;
+                .select-header {
+                    display: flex;
+                    flex: 1;
+
+                    .inputMois {
+                        margin-right: 1rem;
+                    }
+
                 }
+
+                input {
+                    width: 40%;
+                }
+
+
             }
 
             .stat {
                 span {
-                    margin: 1rem;
+                    margin: .7rem;
 
                     .mots {
                         color: rgb(97, 182, 221);
@@ -50,7 +62,7 @@
 
                     .page {
                         color: rgb(97, 182, 221);
-                        ;
+
                         font-weight: bold;
                     }
                 }

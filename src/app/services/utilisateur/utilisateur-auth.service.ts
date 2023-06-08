@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -26,9 +25,7 @@ export class UtilisateurAuthService {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('role');
   }
-  public isLoggeIn() {
-    return this.getRole() && this.getToken();
-  }
+
   public setIdUser(id: number) {
     var idLocal = id.toString();
     localStorage.setItem('idUser', idLocal);
@@ -40,5 +37,26 @@ export class UtilisateurAuthService {
   public getUser() {
     var user = localStorage.getItem('user');
     return user;
+  }
+  public isLoggeInClient(): boolean {
+    if (this.getRole() == "CLIENT" && this.getToken()) {
+      return true;
+    }
+    localStorage.clear()
+    return false
+  }
+  public isLoggeInAdmin(): boolean {
+    if (this.getRole() == "ADMIN" && this.getToken()) {
+      return true;
+    }
+    localStorage.clear()
+    return false
+  }
+  public isLoggeInBackOffice(): boolean {
+    if (this.getRole() == "BACKOFFICE" && this.getToken()) {
+      return true;
+    }
+    localStorage.clear()
+    return false
   }
 }

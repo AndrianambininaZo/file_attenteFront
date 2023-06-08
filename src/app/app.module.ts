@@ -30,6 +30,8 @@ import { TraitementComponent } from './admin/traitement/traitement.component';
 import { TachesJourComponent } from './admin/taches-jour/taches-jour.component';
 import { FactureComponent } from './admin/facture/facture.component';
 import { RouterModule } from '@angular/router';
+import { TacheEncorsComponent } from './admin/tache-encors/tache-encors.component';
+import { TousTacheComponent } from './admin/tous-tache/tous-tache.component';
 const routes = [
   { path: 'admin/facture', component: FactureComponent },
 ];
@@ -60,6 +62,8 @@ const routes = [
     TraitementComponent,
     TachesJourComponent,
     FactureComponent,
+    TacheEncorsComponent,
+    TousTacheComponent,
   ],
   imports: [
     BrowserModule,

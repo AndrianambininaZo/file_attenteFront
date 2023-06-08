@@ -1,15 +1,16 @@
 <div class="client">
     <div class="header">
       <div class="form-group">
-          <select  class="form-select" (change)="selectByMois($event)">
+          <select  class="form-select select-mois" (change)="selectByMois($event)">
             <option *ngFor="let item of mois" value="{{item.id}}" >{{item.mois}}</option>
           </select>
-          <select name="" id="" class="form-select">
-            <option value="">2023</option>
+          <select name="" id="" class="form-select" (change)="selectByMoisAndAnnee($event)">
+            <option value="{{item}}" *ngFor="let item of annees">{{item}}</option>
           </select>
       </div>
     </div>
     <div class="liste">
+      Liste de tache traitée
         <table class="table table-bordered">
           <thead>
               <tr>

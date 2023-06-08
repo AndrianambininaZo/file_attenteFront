@@ -16,6 +16,8 @@ class TableFacture {
   styleUrls: ['./facture.component.scss']
 })
 export class FactureComponent implements OnInit {
+  totalPageItems: any;
+  page: number = 1;
   paramId!: number;
   paramMois!: number;
   listeTache!: Array<ListTraitement>
@@ -43,7 +45,6 @@ export class FactureComponent implements OnInit {
       next: (data) => {
         console.log(data)
         this.listeTache = data.filter((res) => {
-          this.array.push({ code: 2, id: "tiko" + res.mots })
           return res.reception?.operationEntree.user.id == parseInt(this.id) && res.mois == parseInt(this.idUser!) && res.annee == parseInt(this.annee);
         })
         this.totalByClient = this.listeTache.reduce((previousValue, currentValue) => parseInt(previousValue + currentValue.mots!), 0)

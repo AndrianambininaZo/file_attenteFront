@@ -5,6 +5,8 @@ import { UtilisateurService } from 'src/app/services/utilisateur/utilisateur.ser
 import { UtilisateurAuthService } from 'src/app/services/utilisateur/utilisateur-auth.service';
 import { TraiterService } from 'src/app/services/traiter/traiter.service';
 import { Reception } from '../model/reception.model';
+import { interval } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-liste-of-offiche',
@@ -16,10 +18,14 @@ export class ListeOfOfficheComponent implements OnInit {
   role: any = this.utilisateurService.getRole();
   idUser: any = this.utilisateurService.getIdUser();
 
-  constructor(private sevichetache: TachesService, private serviceTraiter: TraiterService, private utilisateurService: UtilisateurAuthService) { }
+  constructor(private route: Router, private sevichetache: TachesService, private serviceTraiter: TraiterService, private utilisateurService: UtilisateurAuthService) { }
 
   ngOnInit(): void {
-    this.getListeTache()
+
+    interval(1000).subscribe(() => {
+      this.getListeTache();
+    })
+
   }
   getListeTache() {
     this.sevichetache.getListe().subscribe({
@@ -36,7 +42,12 @@ export class ListeOfOfficheComponent implements OnInit {
     reception.idUser = this.idUser
     console.log(reception);
     this.serviceTraiter.receptionTache(reception).subscribe(
-      data => console.log(data)
+      {
+        next: (data) => {
+          this.route.navigateByUrl("my/offiche/tache")
+
+        }
+      }
     )
   }
 

@@ -49,7 +49,7 @@ export class CreertacheComponent implements OnInit {
   ajouterTache(submitForm: FormGroup) {
 
     Swal.fire({
-      title: 'Ajoute nouveau tache',
+      title: 'Ajout nouveau tache',
       text: 'Vous ȇtes sur(e) ?',
       width: '350px',
       heightAuto: true,

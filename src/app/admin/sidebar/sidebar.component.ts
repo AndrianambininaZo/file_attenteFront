@@ -36,6 +36,7 @@ export class SidebarComponent implements OnInit {
     this.route.navigate(['/connexion_arosaina'])
   }
   deconnexionClient() {
+    localStorage.clear();
     this.route.navigate(['/'])
 
   }

@@ -5,6 +5,7 @@ import { ListOperation } from '../../model/listeTache.model';
 import { Reception } from '../../model/reception.model';
 import { TraiterService } from 'src/app/services/traiter/traiter.service';
 import { UtilisateurAuthService } from 'src/app/services/utilisateur/utilisateur-auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client-dasboard',
@@ -18,12 +19,17 @@ export class ClientDasboardComponent implements OnInit {
   mois: any = []
   moi!: number
   annee!: number
+  annees: any = []
   inputrechercher!: number
   role: any = this.utilisateurService.getRole();
   idUser: any = this.utilisateurService.getIdUser();
-  constructor(private servicetraiter: TraiterService, private sevichetache: TachesService, private user: UtilisateurService, private utilisateurService: UtilisateurAuthService) {
+  isLoggedIn!: boolean
+
+  constructor(private route: Router, private servicetraiter: TraiterService, private sevichetache: TachesService, private user: UtilisateurService, private utilisateurService: UtilisateurAuthService) {
+    this.isLoggedIn = utilisateurService.isLoggeInClient()
     this.moi = new Date().getMonth()
     this.annee = new Date().getFullYear();
+    this.annees = [this.annee, this.annee - 1]
     let mois = [
       { id: 0, mois: "janvier" },
       { id: 1, mois: "Fevirer" },
@@ -46,14 +52,16 @@ export class ClientDasboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.isLoggedIn) {
+      this.route.navigateByUrl("/")
+    }
     this.getTraitement()
   }
   getTraitement() {
     this.servicetraiter.listTraitement().subscribe({
       next: (data) => {
-        console.log(data)
         this.listeTraitement = data.filter((res) => {
-          return res.annee == this.annee && res.mois != this.moi && res.reception.operationEntree.user.id == this.idUser && res.reception.operationEntree.status == "Traitée";
+          return res.annee == this.annee && res.mois == this.moi && res.reception.operationEntree.user.id == this.idUser && res.reception.operationEntree.status == "Traitée";
         })
       }
     })
@@ -72,14 +80,25 @@ export class ClientDasboardComponent implements OnInit {
   selectByMois(event: Event) {
     const target = event.target as HTMLInputElement;
     const value = target.value
+    this.moi = parseInt(value)
     this.servicetraiter.listTraitement().subscribe({
       next: (data) => {
         this.listeTraitement = data.filter((res) => {
-          return res.annee == this.annee && res.mois == parseInt(value) && res.reception.operationEntree.user.id == this.idUser && res.reception.operationEntree.status == "Traitée";
+          return res.annee == this.annee && res.mois == this.moi && res.reception.operationEntree.user.id == this.idUser && res.reception.operationEntree.status == "Traitée";
         })
-        console.log(this.listeTraitement)
       }
     })
-
+  }
+  selectByMoisAndAnnee(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const value = target.value
+    this.annee = parseInt(value)
+    this.servicetraiter.listTraitement().subscribe({
+      next: (data) => {
+        this.listeTraitement = data.filter((res) => {
+          return res.annee == this.annee && res.mois == this.moi && res.reception.operationEntree.user.id == this.idUser && res.reception.operationEntree.status == "Traitée";
+        })
+      }
+    })
   }
 }

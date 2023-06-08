@@ -9,7 +9,27 @@
     .main {
         width: 50%;
 
+        .main-description-taches {
+            background-color: white;
+            box-shadow: 3px 3px 3px 3px rgb(238, 232, 232);
+
+            .consingation-title {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                span {
+                    font-size: 20px;
+                }
+            }
+
+            span {
+                margin-left: 1rem;
+            }
+        }
+
         .form {
+            margin-top: 1.5rem;
             padding: 2rem;
             background-color: white;
             display: flex;

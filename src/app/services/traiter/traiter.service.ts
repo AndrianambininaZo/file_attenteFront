@@ -7,6 +7,7 @@ import { ListeReception } from 'src/app/admin/model/receptionListe.model';
 import { ListTraitement, Traitemment } from 'src/app/admin/model/traitemment.mode';
 import { environment } from 'src/environments/environment';
 import { UtilisateurAuthService } from '../utilisateur/utilisateur-auth.service';
+import { UtilisateurRequest, addRoleByUserRequest } from 'src/app/admin/model/utilisateur.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,16 @@ export class TraiterService {
   public receptionTache(reception: Reception): Observable<any> {
     return this.http.post(environment.backEndHost + "/api/reception", reception, { headers: this.heders() });
   }
+  public receptionGetUtilisateur(): Observable<any> {
+    return this.http.get(environment.backEndHost + "/api/utilisateur", { headers: this.heders() });
+  }
+  public addUtilisateur(utilisateur: UtilisateurRequest): Observable<any> {
+    return this.http.post(environment.backEndHost + "/api/utilisateur", utilisateur, { headers: this.heders() });
+  }
+  public addRolleByUser(formRoleByUser: addRoleByUserRequest): Observable<any> {
+    return this.http.post(environment.backEndHost + "/api/addRole", formRoleByUser, { headers: this.heders() });
+  }
+
   public getReceptionTache(): Observable<any> {
     return this.http.get<Array<ListeReception>>(environment.backEndHost + "/api/reception", { headers: this.heders() });
   }
@@ -59,6 +70,12 @@ export class TraiterService {
   }
   public listTraitement(): Observable<Array<ListTraitement>> {
     return this.http.get<Array<ListTraitement>>(environment.backEndHost + "/api/traitemment", { headers: this.heders() });
+  }
+  public listTraitementNoValider(): Observable<Array<ListTraitement>> {
+    return this.http.get<Array<ListTraitement>>(environment.backEndHost + "/api/traitemmentByNoValidate", { headers: this.heders() });
+  }
+  public traitementValider(id: number): Observable<ListTraitement> {
+    return this.http.get<ListTraitement>(environment.backEndHost + "/api/traitemmentByValidate/" + id, { headers: this.heders() });
   }
 
 }

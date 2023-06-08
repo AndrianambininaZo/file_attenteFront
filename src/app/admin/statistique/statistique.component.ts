@@ -19,11 +19,14 @@ export class StatistiqueComponent implements OnInit {
   moi!: number
   listClient: any
   mois: any = []
+  annees: any = []
+  annee!: number
   totalByClient!: number
   totalPageByClient!: number
   constructor(private servicetraiter: TraiterService, private servicetaches: TachesService, private servicesAuth: UtilisateurAuthService) {
-
     this.moi = new Date().getMonth()
+    this.annee = new Date().getFullYear();
+    this.annees = [this.annee, this.annee - 1]
     let mois = [
       { id: 0, mois: "janvier" },
       { id: 1, mois: "Fevirer" },
@@ -47,7 +50,7 @@ export class StatistiqueComponent implements OnInit {
       next: (data) => {
         this.listeTache = data.filter((res) => {
           let mois = new Date("" + res.dateFull)
-          return mois.getMonth() == this.moi;
+          return mois.getMonth() == this.moi && res.annee == this.annee;
         })
         this.totalByClient = this.listeTache.reduce((previousValue, currentValue) => parseInt(previousValue + currentValue.mots!), 0)
         this.totalPageByClient = this.listeTache.reduce((previousValue, currentValue) => parseInt(previousValue + currentValue.page!), 0)
@@ -62,10 +65,10 @@ export class StatistiqueComponent implements OnInit {
     const value = target.value
     this.servicetraiter.listTraitement().subscribe({
       next: (data) => {
+        console.log(data)
         this.listeTache = data.filter((res) => {
           let mois = new Date("" + res.dateFull)
-          console.log(mois.getMonth() + "dhbss")
-          return mois.getMonth() == parseInt(value);
+          return res.mois == parseInt(value) && res.annee == this.annee;
         })
         this.getClienByMois(parseInt(target.value))
         this.totalByClient = this.listeTache.reduce((previousValue, currentValue) => parseInt(previousValue + currentValue.mots!), 0)
@@ -77,6 +80,7 @@ export class StatistiqueComponent implements OnInit {
   selectByClient(event: Event) {
     const target = event.target as HTMLInputElement;
     const value = target.value
+
     this.servicetraiter.listTraitement().subscribe({
       next: (data) => {
         this.listeTache = data.filter((res) => {
@@ -131,6 +135,21 @@ export class StatistiqueComponent implements OnInit {
         }
       }
     )
+  }
+  selectByAnnee(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const value = target.value
+    this.annee = parseInt(value)
+    this.servicetraiter.listTraitement().subscribe({
+      next: (data) => {
+        this.listeTache = data.filter((res) => {
+          let mois = new Date("" + res.dateFull)
+          return res.mois == this.moi && res.annee == this.annee;
+        })
+        this.totalByClient = this.listeTache.reduce((previousValue, currentValue) => parseInt(previousValue + currentValue.mots!), 0)
+        this.totalPageByClient = this.listeTache.reduce((previousValue, currentValue) => parseInt(previousValue + currentValue.page!), 0)
+      }
+    })
   }
 
 

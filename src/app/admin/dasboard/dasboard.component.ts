@@ -4,6 +4,7 @@ import { UtilisateurAuthService } from 'src/app/services/utilisateur/utilisateur
 import { TraiterService } from 'src/app/services/traiter/traiter.service';
 import { ListTraitement } from '../model/traitemment.mode';
 import { Router } from '@angular/router';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-dasboard',
@@ -11,6 +12,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./dasboard.component.scss']
 })
 export class DasboardComponent implements OnInit {
+  totalPageItems: any;
+  page: number = 1;
   listeTache: any
   tachesAjourdui: any
   token!: string;
@@ -18,15 +21,23 @@ export class DasboardComponent implements OnInit {
   totalByClient!: number;
   moi!: number
   mois: any = []
+  annees: any = []
+  annee!: number
   inputRechercher!: string
   totalPageByClient!: number
   totalPageJour: any;
   totalMotsJour: any;
   listeTacheAujoudui: any;
+  traitemeNoValider: ListTraitement[] | undefined;
+  tacheNoValider!: Number
+  isLoggedIn!: boolean
   constructor(private route: Router, private servicetraiter: TraiterService, private servicetaches: TachesService, private servicesAuth: UtilisateurAuthService) {
+
+
     this.token = servicesAuth.getToken();
     this.moi = new Date().getMonth()
-
+    this.annee = new Date().getFullYear();
+    this.annees = [this.annee, this.annee - 1]
     let mois = [
       { id: 0, mois: "janvier" },
       { id: 1, mois: "Fevirer" },
@@ -48,15 +59,39 @@ export class DasboardComponent implements OnInit {
     this.mois.unshift(nomMois)
   }
   ngOnInit(): void {
+
+    interval(1000).subscribe(() => {
+
+      this.getTotalParJour()
+      this.getListeNovalider()
+    })
     this.getStatitique();
-    this.getTotalParJour()
   }
   getStatitique() {
     this.servicetraiter.listeTraitementByclient().subscribe(
       {
         next: (data) => {
-          this.listeTache = data.filter((res: { mois: number; "": any; }) => {
-            return res.mois == this.moi
+          this.listeTache = data.filter((res: { mois: number; annee: number; "": any; }) => {
+            return res.mois == this.moi && res.annee == this.annee
+          })
+          this.totalByClient = this.listeTache.reduce((previousValue: any, currentValue: { mots: any; }) => parseInt(previousValue + currentValue.mots!), 0)
+          this.totalPageByClient = this.listeTache.reduce((previousValue: any, currentValue: { pages: any; }) => parseInt(previousValue + currentValue.pages!), 0)
+
+        }
+      }
+    )
+  }
+  selectByAnnee(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const value = target.value
+    this.annee = parseInt(value)
+    this.servicetraiter.listeTraitementByclient().subscribe(
+      {
+        next: (data) => {
+          this.listeTache = data.filter((res: {
+            annee: number; mois: number; "": any;
+          }) => {
+            return res.mois == this.moi && res.annee == this.annee
           })
           this.totalByClient = this.listeTache.reduce((previousValue: any, currentValue: { mots: any; }) => parseInt(previousValue + currentValue.mots!), 0)
           this.totalPageByClient = this.listeTache.reduce((previousValue: any, currentValue: { pages: any; }) => parseInt(previousValue + currentValue.pages!), 0)
@@ -75,10 +110,9 @@ export class DasboardComponent implements OnInit {
             const dadeVrais = date.toLocaleDateString("fr").replace("/", "-").replace("/", "-");
             return res.date == dadeVrais
           })
-          console.log(this.listeTacheAujoudui)
           this.total = this.listeTacheAujoudui.length
           this.totalMotsJour = this.listeTacheAujoudui.reduce((previousValue: any, currentValue: { mots: any; }) => parseInt(previousValue + currentValue.mots!), 0)
-          this.totalPageJour = this.listeTacheAujoudui.reduce((previousValue: any, currentValue: { pages: any; }) => parseInt(previousValue + currentValue.pages!), 0)
+          this.totalPageJour = this.listeTacheAujoudui.reduce((previousValue: any, currentValue: { page: any; }) => parseInt(previousValue + currentValue.page!), 0)
         }
       }
     )
@@ -90,9 +124,10 @@ export class DasboardComponent implements OnInit {
     this.servicetraiter.listeTraitementByclient().subscribe(
       {
         next: (data) => {
-          console.log(data)
-          this.listeTache = data.filter((res: { mois: number; "": any; }) => {
-            return res.mois == this.moi
+          this.listeTache = data.filter((res: {
+            annee: number; mois: number; "": any;
+          }) => {
+            return res.mois == this.moi && res.annee == this.annee
           })
           this.totalByClient = this.listeTache.reduce((previousValue: any, currentValue: { mots: any; }) => parseInt(previousValue + currentValue.mots!), 0)
           this.totalPageByClient = this.listeTache.reduce((previousValue: any, currentValue: { pages: any; }) => parseInt(previousValue + currentValue.pages!), 0)
@@ -108,10 +143,8 @@ export class DasboardComponent implements OnInit {
     this.servicetraiter.listeTraitementByclient().subscribe(
       {
         next: (data) => {
-          this.listeTache = data.filter((res: {
-            user: any; mois: number; "": any;
-          }) => {
-            return res.mois == this.moi && res.user.nom.toLowerCase().includes(this.inputRechercher.toLowerCase())
+          this.listeTache = data.filter((res: { annee: number; user: any; mois: number; "": any; }) => {
+            return res.mois == this.moi && res.user.nom.toLowerCase().includes(this.inputRechercher.toLowerCase()) && res.annee == this.annee
           })
           this.totalByClient = this.listeTache.reduce((previousValue: any, currentValue: { mots: any; }) => parseInt(previousValue + currentValue.mots!), 0)
           this.totalPageByClient = this.listeTache.reduce((previousValue: any, currentValue: { pages: any; }) => parseInt(previousValue + currentValue.pages!), 0)
@@ -122,5 +155,13 @@ export class DasboardComponent implements OnInit {
   }
   redirectfacture(idUser: number, annee: number) {
     this.route.navigateByUrl("/my/admin/facture?id=" + idUser + "&idUser=" + this.moi + "&annee=" + annee)
+  }
+  getListeNovalider() {
+    this.servicetraiter.listTraitementNoValider().subscribe({
+      next: (data) => {
+        this.traitemeNoValider = data
+        this.tacheNoValider = this.traitemeNoValider.length
+      }
+    })
   }
 }

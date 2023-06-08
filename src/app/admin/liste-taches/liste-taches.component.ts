@@ -4,6 +4,7 @@ import { ListOperation } from 'src/app/admin/model/listeTache.model';
 import { TachesService } from 'src/app/services/taches/taches.service';
 import { Reception } from '../model/reception.model';
 import { UtilisateurService } from 'src/app/services/utilisateur/utilisateur.service';
+import { interval } from 'rxjs';
 @Component({
   selector: 'app-liste-taches',
   templateUrl: './liste-taches.component.html',
@@ -16,14 +17,17 @@ export class ListeTachesComponent implements OnInit {
   inputrechercher!: number
   constructor(private sevichetache: TachesService, private user: UtilisateurService) { }
   ngOnInit(): void {
+    interval(1000).subscribe(() => {
+      this.getListeTache();
+    })
     this.getClieent();
-    this.getListeTache();
+
   }
   getClieent() {
     this.user.listUtilisateur().subscribe(
       {
         next: (data) => {
-          this.client = data.filter(client => {
+          this.client = data.filter((client: { role: string; }) => {
             return client.role == "CLIENT"
           });
         }
@@ -34,7 +38,7 @@ export class ListeTachesComponent implements OnInit {
     this.sevichetache.getListe().subscribe({
       next: (data) => {
         this.listeOperation = data.filter((res) => {
-          return res.status != "Traitée";
+          return res.status == "En instance";
         })
       }
     })

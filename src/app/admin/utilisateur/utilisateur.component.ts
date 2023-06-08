@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UtilisateurService } from 'src/app/services/utilisateur/utilisateur.service';
 import { Utilisateur, UtilisateurRequest, addRoleByUserRequest } from '../model/utilisateur.model';
-import { Observable } from 'rxjs';
+import { interval } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { TraiterService } from 'src/app/services/traiter/traiter.service';
 class Role {
   role?: string;
 }
@@ -23,11 +24,11 @@ export class UtilisateurComponent implements OnInit {
   disableForm: boolean = true
   disableFormModifier: boolean = false
   utilisateur: UtilisateurRequest = new UtilisateurRequest();
-  user!: Observable<Array<Utilisateur>>
+  user!: any
   userModif: Utilisateur = new Utilisateur();
   role: Role = new Role()
-  constructor(private services: UtilisateurService, private fb: FormBuilder, private http: HttpClient) {
-    this.user = this.services.listUtilisateur();
+  constructor(private test: TraiterService, private services: UtilisateurService, private fb: FormBuilder, private http: HttpClient) {
+
   }
 
   ngOnInit(): void {
@@ -41,9 +42,14 @@ export class UtilisateurComponent implements OnInit {
 
   }
   getUtilisateur() {
-    return this.user = this.services.listUtilisateur();
-    ;
+    this.test.receptionGetUtilisateur().subscribe({
+      next: (data) => {
+        this.user = data
+      }
+    });
+
   }
+
   enregitrerUtilisateur() {
     if (this.formUtilisateur.valid) {
       this.utilisateur = new UtilisateurRequest();
@@ -52,24 +58,21 @@ export class UtilisateurComponent implements OnInit {
       this.utilisateur.password = this.formUtilisateur.controls['password'].value
       this.role = this.formUtilisateur.value
       console.log(this.role.role)
-      this.services.enregistrerUtilisateur(this.utilisateur).subscribe(
+      console.log(this.utilisateur)
+      this.test.addUtilisateur(this.utilisateur).subscribe(
         data => {
           const addRoleByUser = {
             role: this.role.role,
             email: data.email
           }
-          console.log(addRoleByUser)
-          //ajout role by user enregistre
-          this.services.ajouerRoleByUser(addRoleByUser).subscribe(
+          this.test.addRolleByUser(addRoleByUser).subscribe(
             {
               next: (data) => {
                 this.getUtilisateur();
                 this.modal = true;
                 this.formUtilisateur.reset(0);
-
               }, error: (err) => {
                 this.modal = false
-
               }
             }
           )

@@ -47,11 +47,9 @@ export class TraitementOfOfficheComponent implements OnInit {
           this.tacheService.envoyerDoc(formData, data).subscribe({
             next: (data) => {
               submitForm.reset(0);
-              this.router.navigateByUrl("/my")
             }
           })
-          window.location.reload();
-
+          this.router.navigateByUrl("/my/backoffice")
         }
       )
 

@@ -20,6 +20,9 @@ import { LoginForAdminComponent } from './login-for-admin/login-for-admin.compon
 import { StatistiqueComponent } from './admin/statistique/statistique.component';
 import { TachesJourComponent } from './admin/taches-jour/taches-jour.component';
 import { FactureComponent } from './admin/facture/facture.component';
+import { TacheEncorsComponent } from './admin/tache-encors/tache-encors.component';
+import { TraitementComponent } from './admin/traitement/traitement.component';
+import { TousTacheComponent } from './admin/tous-tache/tous-tache.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent, },
@@ -31,7 +34,10 @@ const routes: Routes = [
       //page admin
       { path: "", component: DasboardComponent },
       { path: "admin/utilisateur", component: UtilisateurComponent },
+      { path: "admin/list_tous", component: TousTacheComponent },
       { path: "admin/list_tache", component: ListeTachesComponent },
+      { path: "admin/list_validation", component: TraitementComponent },
+      { path: "admin/list_encours", component: TacheEncorsComponent },
       { path: "admin/statistique", component: StatistiqueComponent },
       { path: "admin/list_taches_jour", component: TachesJourComponent },
       { path: "admin/facture", component: FactureComponent },

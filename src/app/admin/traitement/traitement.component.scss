@@ -1,0 +1,25 @@
+.traitement {
+    margin: 1rem;
+
+    .header {}
+
+    .liste {
+        table {
+            thead {}
+
+            tbody {
+                tr {
+                    td {
+                        .btnTelecharger {
+                            margin-left: .5rem;
+                        }
+
+                        .btnAnnuller {
+                            margin-left: .5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
