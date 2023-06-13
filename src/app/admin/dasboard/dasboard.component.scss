@@ -38,6 +38,10 @@
                     display: flex;
                     flex: 1;
 
+                    select {
+                        height: 2.5rem;
+                    }
+
                     .inputMois {
                         margin-right: 1rem;
                     }
@@ -46,24 +50,32 @@
 
                 input {
                     width: 40%;
+                    height: 2.5rem;
                 }
 
 
             }
 
             .stat {
-                span {
-                    margin: .7rem;
+                display: flex;
+                justify-content: end;
 
-                    .mots {
-                        color: rgb(97, 182, 221);
-                        font-weight: bold;
-                    }
+                .stat-body {
+                    display: flex;
+                    flex-direction: column;
+                    height: 4rem;
 
-                    .page {
-                        color: rgb(97, 182, 221);
+                    span {
+                        .mots {
+                            color: rgb(97, 182, 221);
+                            font-weight: bold;
+                        }
 
-                        font-weight: bold;
+                        .page {
+                            color: rgb(97, 182, 221);
+
+                            font-weight: bold;
+                        }
                     }
                 }
             }

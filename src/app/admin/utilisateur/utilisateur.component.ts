@@ -90,9 +90,11 @@ export class UtilisateurComponent implements OnInit {
   }
   desactiverCompter(id: any) {
     const idParse = parseInt(id);
-    this.http.get(environment.backEndHost + "/api/modifierstatus/" + idParse).subscribe({
+    this.test.setStatusUser(id).subscribe({
       next: (data) => {
         this.getUtilisateur();
+      }, error: (err) => {
+        console.log(err);
       }
     })
 

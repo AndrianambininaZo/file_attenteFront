@@ -8,6 +8,7 @@ import { ListTraitement, Traitemment } from 'src/app/admin/model/traitemment.mod
 import { environment } from 'src/environments/environment';
 import { UtilisateurAuthService } from '../utilisateur/utilisateur-auth.service';
 import { UtilisateurRequest, addRoleByUserRequest } from 'src/app/admin/model/utilisateur.model';
+import { RequestPassword } from 'src/app/admin/model/requestPassword.model';
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +34,17 @@ export class TraiterService {
   public addUtilisateur(utilisateur: UtilisateurRequest): Observable<any> {
     return this.http.post(environment.backEndHost + "/api/utilisateur", utilisateur, { headers: this.heders() });
   }
+  public setPassword(request: RequestPassword): Observable<any> {
+    return this.http.post(environment.backEndHost + "/api/utilisateur/setPassword", request, { headers: this.heders() });
+  }
+  public getUtilisateur(id: number): Observable<UtilisateurRequest> {
+    return this.http.get<UtilisateurRequest>(environment.backEndHost + "/api/utilisateur/" + id, { headers: this.heders() });
+  }
   public addRolleByUser(formRoleByUser: addRoleByUserRequest): Observable<any> {
     return this.http.post(environment.backEndHost + "/api/addRole", formRoleByUser, { headers: this.heders() });
+  }
+  public setStatusUser(id: number): Observable<any> {
+    return this.http.get(environment.backEndHost + "/api/utilisateur/setStatus?id=" + id, { headers: this.heders() });
   }
 
   public getReceptionTache(): Observable<any> {

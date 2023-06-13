@@ -43,11 +43,13 @@
                 <input type="text" name="" id="" placeholder="Recherce par client" class="form-control inputCode" (keyup)="getKey($event)">          
             </div>
             <div class="stat">
-                <span>Total mots: <span class="mots">{{totalByClient}}</span></span> 
-                <span>Total pages: <span class="page">{{totalPageByClient}}</span></span>                
+                <div class="stat-body">
+                    <span>Total mots: <span class="mots">{{totalByClient}}</span></span> 
+                    <span>Total pages: <span class="page">{{totalPageByClient}}</span></span>
+                </div>                               
             </div>
         </div>       
-        <table class="table table-group-divider tableStat">
+        <table class="table table-bordered tableStat">
             <thead>
                 <tr>
                     <th>#</th>
@@ -64,7 +66,7 @@
                     <td>{{item.mots}}</td>
                     <td>{{item.pages}}</td>
                     <td>
-                        <button class="btn btn-primary"(click)="redirectfacture(item.user.id,item.annee)">Facturer</button>
+                        <button class="btn btn-sm btn-primary"(click)="redirectfacture(item.user.id,item.annee)">Facturer</button>
                     </td>
                 </tr>
             </tbody>

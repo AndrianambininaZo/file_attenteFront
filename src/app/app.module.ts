@@ -32,6 +32,8 @@ import { FactureComponent } from './admin/facture/facture.component';
 import { RouterModule } from '@angular/router';
 import { TacheEncorsComponent } from './admin/tache-encors/tache-encors.component';
 import { TousTacheComponent } from './admin/tous-tache/tous-tache.component';
+import { ParametreComponent } from './admin/parametre/parametre.component';
+import { ListFactureComponent } from './admin/list-facture/list-facture.component';
 const routes = [
   { path: 'admin/facture', component: FactureComponent },
 ];
@@ -64,6 +66,8 @@ const routes = [
     FactureComponent,
     TacheEncorsComponent,
     TousTacheComponent,
+    ParametreComponent,
+    ListFactureComponent,
   ],
   imports: [
     BrowserModule,

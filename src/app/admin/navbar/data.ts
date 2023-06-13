@@ -13,25 +13,25 @@ export const navData = [
     },
     {
         routeLink: "/my/admin/list_tous",
-        icon: "bi bi-clipboard-data",
+        icon: "bi bi-list-check",
         label: "Tous",
         role: "ADMIN"
     },
     {
         routeLink: "/my/admin/list_tache",
-        icon: "bi bi-list-task",
+        icon: "bi bi-list",
         label: "List tache",
         role: "ADMIN"
     },
     {
         routeLink: "/my/admin/list_encours",
-        icon: "bi bi-list-task",
+        icon: "bi bi-compass",
         label: "En cours",
         role: "ADMIN"
     },
     {
         routeLink: "/my/admin/list_validation",
-        icon: "bi bi-list-task",
+        icon: "bi bi-check2-circle",
         label: "Validation",
         role: "ADMIN"
     },
@@ -42,14 +42,14 @@ export const navData = [
         role: "ADMIN"
     },
     {
-        routeLink: "/admin/facturation",
+        routeLink: "/my/admin/list_facture",
         icon: "bi bi-receipt",
         label: "Facture",
         role: "ADMIN"
     },
     {
-        routeLink: "/admin/facturation",
-        icon: "bi bi-receipt",
+        routeLink: "/my/admin/parametre",
+        icon: "bi bi-gear",
         label: "Parametre",
         role: "ADMIN"
     },
@@ -74,6 +74,12 @@ export const navClient = [
         label: "Creer tache",
         role: "CLIENT"
     },
+    {
+        routeLink: "/my/admin/parametre",
+        icon: "bi bi-gear",
+        label: "Parametre",
+        role: "CLIENT"
+    },
 ]
 export const navBackOffiche = [
     {
@@ -93,6 +99,12 @@ export const navBackOffiche = [
         routeLink: "/my/offiche/tache",
         icon: "bi bi-check-square",
         label: "Tache",
+        role: "BACKOFFICE"
+    },
+    {
+        routeLink: "/my/admin/parametre",
+        icon: "bi bi-gear",
+        label: "Parametre",
         role: "BACKOFFICE"
     },
 

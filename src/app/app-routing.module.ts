@@ -23,6 +23,8 @@ import { FactureComponent } from './admin/facture/facture.component';
 import { TacheEncorsComponent } from './admin/tache-encors/tache-encors.component';
 import { TraitementComponent } from './admin/traitement/traitement.component';
 import { TousTacheComponent } from './admin/tous-tache/tous-tache.component';
+import { ParametreComponent } from './admin/parametre/parametre.component';
+import { ListFactureComponent } from './admin/list-facture/list-facture.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent, },
@@ -40,7 +42,9 @@ const routes: Routes = [
       { path: "admin/list_encours", component: TacheEncorsComponent },
       { path: "admin/statistique", component: StatistiqueComponent },
       { path: "admin/list_taches_jour", component: TachesJourComponent },
+      { path: "admin/list_facture", component: ListFactureComponent },
       { path: "admin/facture", component: FactureComponent },
+      { path: "admin/parametre", component: ParametreComponent },
 
       //client
       { path: "client/creer_tache", component: CreertacheComponent },

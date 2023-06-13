@@ -21,16 +21,20 @@
                 <tr>
                     <th>#</th>
                     <th>Code</th>
+                    <th>Client</th>
                     <th>Mots</th>
                     <th>Page</th>
+                    <th>BackOffice</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let item of listeTache | paginate:{itemsPerPage:10,currentPage:page,totalItems:totalPageItems}">
                     <td>{{item.id}}</td>
                     <td>{{item.reception!.operationEntree.codeTache}}</td>
+                    <td>{{item.reception!.operationEntree.user.nom}}</td>
                     <td>{{item.mots}}</td>
                     <td>{{item.page}}</td>
+                    <td>{{item.reception.user.nom}}</td>
                 </tr>
             </tbody>
         </table>

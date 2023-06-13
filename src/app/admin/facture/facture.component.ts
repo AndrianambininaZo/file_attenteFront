@@ -28,10 +28,12 @@ export class FactureComponent implements OnInit {
   userNom!: string
   annee!: string
   array: Array<TableFacture> = new Array();
+  prixEntree: number = 1
   constructor(private route: ActivatedRoute, private router: Router, private servicetraiter: TraiterService, private servicetaches: TachesService, private servicesAuth: UtilisateurAuthService) {
     this.id = this.route.snapshot.queryParamMap.get('id')!;
     this.idUser = this.route.snapshot.queryParamMap.get('idUser')!;
     this.annee = this.route.snapshot.queryParamMap.get('annee')!;
+
   }
   ngOnInit(): void {
     if (this.id == "" || this.idUser == "")
@@ -47,13 +49,12 @@ export class FactureComponent implements OnInit {
         this.listeTache = data.filter((res) => {
           return res.reception?.operationEntree.user.id == parseInt(this.id) && res.mois == parseInt(this.idUser!) && res.annee == parseInt(this.annee);
         })
-        this.totalByClient = this.listeTache.reduce((previousValue, currentValue) => parseInt(previousValue + currentValue.mots!), 0)
+        this.totalByClient = this.listeTache.reduce((previousValue, currentValue) => parseInt(previousValue + currentValue.mots!), 0) * this.prixEntree
         this.totalPageByClient = this.listeTache.reduce((previousValue, currentValue) => parseInt(previousValue + currentValue.page!), 0)
-        console.log(this.array)
+
       }
     })
   }
-
   exportExcel() {
     let elem = document.getElementById("table-listeR");
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(elem);
@@ -61,4 +62,17 @@ export class FactureComponent implements OnInit {
     XLSX.utils.book_append_sheet(wb, ws, "Sheet1")
     XLSX.writeFile(wb, "ExcelSheet.xlsx")
   }
+  prixUntaire(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const value = target.value
+    this.prixEntree = parseInt(value)
+    console.log(this.prixEntree)
+    this.selectByClient()
+  }
+  test() {
+    alert(this.totalByClient)
+    console.log(this.listeTache)
+  }
 }
+
+

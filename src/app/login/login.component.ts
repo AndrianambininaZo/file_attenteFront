@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
               this.authService.setIdUser(res.user.id)
               this.route.navigate(['/my/client']);
             } else {
-              alert("salut")
+              alert("Votre compte est bloqué, veuillez rappeler le service client")
               return;
             }
           }

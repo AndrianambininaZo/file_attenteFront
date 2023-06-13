@@ -32,7 +32,8 @@ export class TraitementOfOfficheComponent implements OnInit {
     const file = target.files as FileList
     this.fileOperationDoc = file[0];
     this.fileName = file[0].name
-    console.log(this.fileOperationDoc)
+
+    console.log(this.fileName)
   }
   ajoutrTraitement(submitForm: FormGroup) {
     if (submitForm.valid) {

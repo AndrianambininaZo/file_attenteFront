@@ -15,16 +15,17 @@
             </div>
             <div class="form-group2">
                 <label for="">Prix unitaire:</label>
-                <input type="text" placeholder="Prix unitaire" class="form-control">
+                <input type="test" placeholder="Prix unitaire" class="form-control" (keyup)="prixUntaire($event)">
             </div>
         </div>
         <div class="button-excel">
             <label for="">Facturer :</label>
             <button class="btn btn-primary" (click)="exportExcel()">Exporter</button>
+            <button (click)="test()">Test</button>
         </div>
     </div>
     <div class="liste">
-        <table class="table table-group-divider" id="table-listeR">
+        <table class="table table-bordered" id="table-listeR">
             <thead>
                 <tr>
                     <th>#</th>
@@ -41,7 +42,7 @@
                 <tr class="total-row">
                     <td colspan="1"></td>
                     <td>Total</td>
-                    <td>250.00</td>
+                    <td>{{totalByClient}}</td>
                 </tr>
             </tbody>
         </table>        

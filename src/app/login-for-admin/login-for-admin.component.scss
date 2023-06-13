@@ -16,7 +16,6 @@
         background-color: white;
         padding: 1rem;
         border-radius: 9px;
-
         height: auto;
 
         form {
@@ -27,10 +26,18 @@
 
             .header_form {
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
 
+                img {
+                    width: 120px;
+                    height: 90px;
+                    border-radius: 90% 90% 0% 0%;
+                }
+
                 span {
+                    margin-left: 1rem;
                     font-size: 30px;
                     border-bottom: solid 2px blue;
                     color: blue;
@@ -68,10 +75,5 @@
                 }
             }
         }
-
     }
-
-
-
-
 }
