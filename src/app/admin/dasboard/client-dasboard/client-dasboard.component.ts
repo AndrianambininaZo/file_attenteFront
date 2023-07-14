@@ -6,6 +6,10 @@ import { Reception } from '../../model/reception.model';
 import { TraiterService } from 'src/app/services/traiter/traiter.service';
 import { UtilisateurAuthService } from 'src/app/services/utilisateur/utilisateur-auth.service';
 import { Router } from '@angular/router';
+import { ConfirmBoxEvokeService, ConfirmBoxInitializer } from '@costlydeveloper/ngx-awesome-popup';
+import { NgxConfirmBoxService } from 'ngx-confirm-box';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-client-dasboard',
@@ -13,6 +17,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./client-dasboard.component.scss']
 })
 export class ClientDasboardComponent implements OnInit {
+  totalPageItems: any;
+  page: number = 1;
   listeTraitement!: any
   reception: Reception = new Reception();
   client!: any
@@ -25,7 +31,7 @@ export class ClientDasboardComponent implements OnInit {
   idUser: any = this.utilisateurService.getIdUser();
   isLoggedIn!: boolean
 
-  constructor(private route: Router, private servicetraiter: TraiterService, private sevichetache: TachesService, private user: UtilisateurService, private utilisateurService: UtilisateurAuthService) {
+  constructor(private confirmBoxEvokeService: ConfirmBoxEvokeService, private confirmBox: NgxConfirmBoxService, private route: Router, private servicetraiter: TraiterService, private sevichetache: TachesService, private user: UtilisateurService, private utilisateurService: UtilisateurAuthService) {
     this.isLoggedIn = utilisateurService.isLoggeInClient()
     this.moi = new Date().getMonth()
     this.annee = new Date().getFullYear();
@@ -101,4 +107,26 @@ export class ClientDasboardComponent implements OnInit {
       }
     })
   }
+  test() {
+    //this.confirmBoxEvokeService.success('I am title!', 'I am a message!', 'Confirm', 'Decline')
+
+    const invoiceData = {
+      customer: 'John Doe',
+      items: [
+        { description: 'Product 1', quantity: 2, price: 10 },
+        { description: 'Product 2', quantity: 1, price: 15 },
+        { description: 'Product 3', quantity: 3, price: 8 }
+      ],
+      total: 0
+    };
+    invoiceData.total = invoiceData.items.reduce((acc, item) => acc + (item.quantity * item.price), 0);
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet([invoiceData]);
+    const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+    const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const data: Blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
+    saveAs(data, 'invoice.xlsx');
+
+
+  }
+
 }

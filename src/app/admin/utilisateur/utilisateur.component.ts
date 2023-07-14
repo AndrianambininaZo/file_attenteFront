@@ -34,7 +34,7 @@ export class UtilisateurComponent implements OnInit {
   ngOnInit(): void {
     this.getUtilisateur();
     this.formUtilisateur = this.fb.group({
-      nom: this.fb.control("", [Validators.required]),
+      nom: this.fb.control("", [Validators.required, Validators.minLength(2)]),
       email: this.fb.control("", [Validators.required, Validators.email]),
       password: this.fb.control("", [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
       role: this.fb.control("", Validators.required),

@@ -1,11 +1,15 @@
 <div class="traitement">    
     <form [formGroup]="formTraitement" (ngSubmit)="ajoutrTraitement(formTraitement)">
         <div class="header">
-            <span>Validation traimment</span>
+            <span>Validation traitement</span>
         </div>
         <div class="form-group">
             <label for="" class="form-label">Description</label>
             <input type="text" formControlName="description" class="form-control" placeholder="Description de travail">
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Duree Audio</label>
+            <input type="number" formControlName="audio" class="form-control" placeholder="Duree audio par munite">
         </div>
         <div class="form-group">
             <label for="" class="form-label">Fichier doc</label>

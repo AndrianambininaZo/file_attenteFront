@@ -21,10 +21,12 @@
             <div class="form-group">
                 <label for="">Nouveau mot de passe:</label>
                 <input type="text" class="form-control" placeholder="Nouveau mot de passe" formControlName="setPassword">
+                <small *ngIf="formPassword.controls['setPassword'].errors && formPassword.controls['setPassword'].touched" class="text-danger">Mot de passe non valide(min 6 et max 14)</small>
              </div>
              <div class="form-group">
                 <label for="">Retapez nouveau mot de passe:</label>
                 <input type="text" class="form-control" placeholder="Nouveau mot de passe" formControlName="confirmPassword">
+                <small *ngIf="formPassword.controls['confirmPassword'].errors && formPassword.controls['confirmPassword'].touched" class="text-danger">Mot de passe non valide(min 6 et max 14)</small>
              </div>
              <div class="form-group">
                 <button [disabled]="formPassword.invalid" type="submit" class="btn btn-primary">Enregitrer les modifications</button>

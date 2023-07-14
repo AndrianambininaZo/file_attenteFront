@@ -1,3 +1,9 @@
 .liste-facture {
     margin: 1rem;
 }
+
+.scroll-container {
+    overflow-y: scroll;
+    height: 60px;
+    /* Ajustez la hauteur selon vos besoins */
+}

@@ -1,11 +1,10 @@
 .noutfoud {
     background-color: rgb(235, 228, 219);
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 75px);
     display: flex;
     justify-content: center;
     align-items: center;
-
     .main {
         display: flex;
         flex-direction: column;
@@ -17,8 +16,6 @@
             color: blue;
         }
 
-        a {
-            text-decoration: none;
-        }
+
     }
 }

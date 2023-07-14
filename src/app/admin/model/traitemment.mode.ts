@@ -2,6 +2,7 @@ export class Traitemment {
     id?: number;
     page?: number;
     mots?: number;
+    audio?: number;
     idReception?: number;
 }
 export interface ListTraitement {

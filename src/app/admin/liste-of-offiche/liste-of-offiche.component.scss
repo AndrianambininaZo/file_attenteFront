@@ -1,7 +1,18 @@
 .listes {
     margin: 1rem;
 
-    .header {}
+    .header {
+        span {
+            border-bottom: solid 1.5px gray;
+        }
+    }
 
     .table {}
+
+    .spanNonTache {
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

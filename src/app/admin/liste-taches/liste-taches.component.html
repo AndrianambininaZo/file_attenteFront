@@ -1,7 +1,8 @@
 <div class="container-list">
-    <div class="header-liste">                    
+    <div class="header-liste">  
+        <span>Liste taches</span>                
     </div>
-    <div class="table">
+    <div *ngIf="listeOperation.length > 0"  class="table">
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -26,5 +27,8 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div *ngIf="listeOperation.length == 0" class="spanNonTache">
+        <span>Aucun tache encours</span>
     </div>
 </div>

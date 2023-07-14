@@ -9,23 +9,27 @@
         justify-content: center;
 
         .header {
-            width: 80%;
-            padding: 1rem;
-            height: auto;
+            width: auto;
+            padding: 1.5rem;
             border-radius: 10px;
-            //border: solid 1px gainsboro;
+            height: auto;
+            border: solid 1px gainsboro;
+            box-shadow: 3px 3px 3px 3px rgb(219, 221, 223);
 
             .title {
                 span {
                     font-size: 20px;
                     font-weight: bold;
                     border-bottom: solid 1.5px gainsboro;
+                    border-bottom: solid 3px gainsboro;
+                    margin-top: 6rem;
                 }
             }
 
             .form-group {
                 font-size: 15px;
                 font-weight: 900;
+                margin-top: 1.5rem;
             }
         }
     }
@@ -34,13 +38,13 @@
         padding: 1.5rem;
         border-radius: 10px;
         border: solid 1px gainsboro;
+        box-shadow: 3px 3px 3px 3px rgb(219, 221, 223);
 
         .title {
-
             span {
                 font-weight: bold;
                 font-size: 20px;
-                border-bottom: solid 2px gainsboro;
+                border-bottom: solid 3px gainsboro;
             }
         }
 

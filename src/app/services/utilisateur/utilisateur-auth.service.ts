@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 })
 export class UtilisateurAuthService {
 
-  constructor() { }
+  constructor(private route: Router) { }
   public setUser(user: string) {
     localStorage.setItem("user", user);
   }
@@ -50,6 +50,7 @@ export class UtilisateurAuthService {
       return true;
     }
     localStorage.clear()
+    this.route.navigateByUrl("/connexion_arosaina")
     return false
   }
   public isLoggeInBackOffice(): boolean {
@@ -57,6 +58,7 @@ export class UtilisateurAuthService {
       return true;
     }
     localStorage.clear()
+
     return false
   }
 }

@@ -3,7 +3,6 @@ import { TraiterService } from 'src/app/services/traiter/traiter.service';
 import { ListeReception } from '../../model/receptionListe.model';
 import { UtilisateurAuthService } from 'src/app/services/utilisateur/utilisateur-auth.service';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-backoofiche-dasboard',
   templateUrl: './backoofiche-dasboard.component.html',

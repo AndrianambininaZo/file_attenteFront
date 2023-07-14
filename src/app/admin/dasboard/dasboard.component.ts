@@ -5,6 +5,7 @@ import { TraiterService } from 'src/app/services/traiter/traiter.service';
 import { ListTraitement } from '../model/traitemment.mode';
 import { Router } from '@angular/router';
 import { interval } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dasboard',
@@ -20,6 +21,7 @@ export class DasboardComponent implements OnInit {
   total!: any;
   totalByClient!: number;
   moi!: number
+  testa: boolean = true
   mois: any = []
   annees: any = []
   annee!: number
@@ -31,10 +33,11 @@ export class DasboardComponent implements OnInit {
   traitemeNoValider: ListTraitement[] | undefined;
   tacheNoValider!: Number
   isLoggedIn!: boolean
-  constructor(private route: Router, private servicetraiter: TraiterService, private servicetaches: TachesService, private servicesAuth: UtilisateurAuthService) {
-
-
-    this.token = servicesAuth.getToken();
+  role: any = this.utilisateurService.getRole();
+  idUser: any = this.utilisateurService.getIdUser();
+  constructor(private http: HttpClient, private route: Router, private servicetraiter: TraiterService, private servicetaches: TachesService, private utilisateurService: UtilisateurAuthService) {
+    this.isLoggedIn = utilisateurService.isLoggeInAdmin()
+    this.token = utilisateurService.getToken();
     this.moi = new Date().getMonth()
     this.annee = new Date().getFullYear();
     this.annees = [this.annee, this.annee - 1]
@@ -74,6 +77,12 @@ export class DasboardComponent implements OnInit {
           this.listeTache = data.filter((res: { mois: number; annee: number; "": any; }) => {
             return res.mois == this.moi && res.annee == this.annee
           })
+          if (this.listeTache.length == 0) {
+            this.testa = false
+          }
+          else {
+            this.testa = true
+          }
           this.totalByClient = this.listeTache.reduce((previousValue: any, currentValue: { mots: any; }) => parseInt(previousValue + currentValue.mots!), 0)
           this.totalPageByClient = this.listeTache.reduce((previousValue: any, currentValue: { pages: any; }) => parseInt(previousValue + currentValue.pages!), 0)
 
@@ -163,5 +172,18 @@ export class DasboardComponent implements OnInit {
         this.tacheNoValider = this.traitemeNoValider.length
       }
     })
+  }
+  test() {
+  }
+  tst() {
+    const url = 'localhost:8085/api/telechargerAudio/' + 1; // Remplacez l'URL par celle de votre API
+
+    this.servicetraiter.test().subscribe((data: Blob) => {
+      const downloadUrl = URL.createObjectURL(data);
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = 'audio.mp3'; // Nom du fichier à télécharger
+      link.click();
+    });
   }
 }

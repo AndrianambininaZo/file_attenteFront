@@ -2,8 +2,8 @@
     <div class="header">
         <span>Liste de taches disponible</span>
     </div>
-    <div class="table">
-        <table class="table table-bordered">
+    <div *ngIf="listeOperation.length > 0" class="table">
+        <table   class="table table-bordered">
             <thead>
                 <tr>
                     <th>#</th>
@@ -28,5 +28,8 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div *ngIf="listeOperation.length == 0" class="spanNonTache">
+        <span>Aucun tache disponible! veuillez attendre</span>
     </div>
 </div>

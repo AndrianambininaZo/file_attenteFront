@@ -87,5 +87,8 @@ export class TraiterService {
   public traitementValider(id: number): Observable<ListTraitement> {
     return this.http.get<ListTraitement>(environment.backEndHost + "/api/traitemmentByValidate/" + id, { headers: this.heders() });
   }
+  public test(): Observable<any> {
+    return this.http.get(environment.backEndHost + "/api/telechargerAudio/" + 2, { headers: this.heders() });
+  }
 
 }

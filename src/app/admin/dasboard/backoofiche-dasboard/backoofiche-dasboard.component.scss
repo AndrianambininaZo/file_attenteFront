@@ -28,4 +28,18 @@
         }
 
     }
+
+    .liste-table {
+        span {
+            font-weight: bold;
+            border-bottom: solid 1.5px gray;
+        }
+    }
+
+    .spanNonTache {
+        height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

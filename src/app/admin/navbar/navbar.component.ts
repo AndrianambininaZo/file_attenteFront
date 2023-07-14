@@ -15,7 +15,7 @@ interface NavToggle {
 
 export class NavbarComponent implements OnInit {
   @Output() onToggleNav: EventEmitter<NavToggle> = new EventEmitter();
-  openNav = false;
+  openNav = true;
   data = navData;
   dataClient = navClient;
   dataBackOffiche = navBackOffiche;
@@ -25,7 +25,6 @@ export class NavbarComponent implements OnInit {
 
   constructor(public servi: UtilisateurService, private serviceAuth: UtilisateurAuthService) {
     this.role = this.serviceAuth.getRole();
-    console.log(this.role)
   }
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {

@@ -25,7 +25,7 @@ export const navData = [
     },
     {
         routeLink: "/my/admin/list_encours",
-        icon: "bi bi-compass",
+        icon: "bi bi-arrow-repeat",
         label: "En cours",
         role: "ADMIN"
     },
@@ -37,7 +37,7 @@ export const navData = [
     },
     {
         routeLink: "/my/admin/utilisateur",
-        icon: "bi bi-file-person-fill",
+        icon: "bi bi-people",
         label: "Utilisateur",
         role: "ADMIN"
     },
@@ -51,6 +51,12 @@ export const navData = [
         routeLink: "/my/admin/parametre",
         icon: "bi bi-gear",
         label: "Parametre",
+        role: "ADMIN"
+    },
+    {
+        routeLink: "/my/admin/chat",
+        icon: "bi bi-chat",
+        label: "Chat",
         role: "ADMIN"
     },
 
@@ -105,6 +111,12 @@ export const navBackOffiche = [
         routeLink: "/my/admin/parametre",
         icon: "bi bi-gear",
         label: "Parametre",
+        role: "BACKOFFICE"
+    },
+    {
+        routeLink: "/my/admin/chat",
+        icon: "bi bi-chat",
+        label: "Chat",
         role: "BACKOFFICE"
     },
 

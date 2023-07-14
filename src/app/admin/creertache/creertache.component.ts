@@ -37,7 +37,6 @@ export class CreertacheComponent implements OnInit {
     this.fileOperationDoc = file[0];
     this.fileName = file[0].name
     console.log(this.fileOperationDoc)
-
   }
   onSelectFileAudio(event: Event) {
     const target = event.target as HTMLInputElement;
@@ -71,16 +70,13 @@ export class CreertacheComponent implements OnInit {
           formData1.append("files", this.fileOperationAudio, this.fileName2);
           this.tacheService.creerTaches(this.operationEntre).subscribe(
             data => {
-              this.tacheService.creerDoc(formData, data).subscribe()
-              this.tacheService.creerDoc(formData1, data).subscribe()
+              this.tacheService.creerDoc(formData, data).subscribe();
+              this.tacheService.creerDoc(formData1, data).subscribe();
               submitForm.reset(0);
-              this.router.navigateByUrl("/my/client/tache")
+              this.router.navigateByUrl("/my/client/tache");
             }
-          )
-
+          );
           // window.location.href = "http://localhost:4200/my";
-
-
         }
         Swal.fire({
           title: '',
@@ -96,11 +92,6 @@ export class CreertacheComponent implements OnInit {
         })
       }
     })
-
-
-
-
-
   }
 
 }

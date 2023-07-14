@@ -5,6 +5,8 @@ import { UtilisateurService } from '../services/utilisateur/utilisateur.service'
 import { UtilisateurAuthService } from '../services/utilisateur/utilisateur-auth.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,15 +16,20 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup
   message!: string
   login: Login = new Login();
+  loaderId: any;
   constructor(private fb: FormBuilder, private services: UtilisateurService,
+    private toastr: ToastrService,
+    private ngxLoader: NgxUiLoaderService,
     private authService: UtilisateurAuthService,
     private route: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
+    //this.ngxLoader.start();
     this.loginForm = this.fb.group({
       username: this.fb.control("", [Validators.email, Validators.required]),
-      password: this.fb.control("", [Validators.required, Validators.min(6)]),
+      password: this.fb.control("", [Validators.required, Validators.minLength(6), Validators.maxLength(14)])
     })
+    // this.ngxLoader.stop();
   }
   /*
   authentification() {
@@ -68,17 +75,29 @@ export class LoginComponent implements OnInit {
               this.authService.setToken(res.jwtToken);
               this.authService.setIdUser(res.user.id)
               this.route.navigate(['/my/client']);
+              this.toastr.success('Connexion réussie', 'Succès');
             } else {
-              alert("Votre compte est bloqué, veuillez rappeler le service client")
+              this.toastr.warning("Votre compte et bloquee veillez rappeeller le service client", "Erreur")
               return;
             }
           }
         }, error: (err) => {
-          console.log(err)
+          if (err.status == 500) {
+            this.toastr.error("Verifir email ou le mot depass saisie", "Authentification erreur")
+          } else {
+            this.toastr.error("Le serveur ne repond pas", "Erreur serveur")
+          }
         }
       })
+    } else {
+      this.toastr.error("Remplir tous le champs et verifier le donne saisie", "Erreur")
     }
   }
+  startLoading() {
+    this.ngxLoader.start();
+    this.ngxLoader.stop();
+  }
+
 }
 
 

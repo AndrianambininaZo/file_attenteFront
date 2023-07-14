@@ -34,6 +34,14 @@ import { TacheEncorsComponent } from './admin/tache-encors/tache-encors.componen
 import { TousTacheComponent } from './admin/tous-tache/tous-tache.component';
 import { ParametreComponent } from './admin/parametre/parametre.component';
 import { ListFactureComponent } from './admin/list-facture/list-facture.component';
+import { ChatComponent } from './admin/chat/chat.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { ConfirmBoxConfigModule, NgxAwesomePopupModule } from '@costlydeveloper/ngx-awesome-popup';
+import { NgxConfirmBoxModule, NgxConfirmBoxService } from 'ngx-confirm-box';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { GroupChatComponent } from './admin/group-chat/group-chat.component';
+
 const routes = [
   { path: 'admin/facture', component: FactureComponent },
 ];
@@ -68,6 +76,8 @@ const routes = [
     TousTacheComponent,
     ParametreComponent,
     ListFactureComponent,
+    ChatComponent,
+    GroupChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,9 +85,16 @@ const routes = [
     HttpClientModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    NgxAwesomePopupModule.forRoot(),
+    ConfirmBoxConfigModule.forRoot(),
+    NgxConfirmBoxModule,
+    NgxUiLoaderModule,
+
   ],
-  providers: [],
+  providers: [NgxConfirmBoxService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

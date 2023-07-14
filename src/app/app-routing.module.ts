@@ -25,15 +25,17 @@ import { TraitementComponent } from './admin/traitement/traitement.component';
 import { TousTacheComponent } from './admin/tous-tache/tous-tache.component';
 import { ParametreComponent } from './admin/parametre/parametre.component';
 import { ListFactureComponent } from './admin/list-facture/list-facture.component';
+import { ChatComponent } from './admin/chat/chat.component';
+import { GroupChatComponent } from './admin/group-chat/group-chat.component';
 
 const routes: Routes = [
-  { path: "", component: LoginComponent, },
+  { path: "", component: LoginComponent },
+  { path: "", redirectTo: "", pathMatch: "full" },
   { path: "connexion_arosaina", component: LoginForAdminComponent },
   { path: "forbidden", component: ForbiddenComponent },
-  { path: "*", component: NotfoundComponent },
+
   {
-    path: "my", component: AdminComponent, children: [
-      //page admin
+    path: "my", component: AdminComponent, children: [     //page admin
       { path: "", component: DasboardComponent },
       { path: "admin/utilisateur", component: UtilisateurComponent },
       { path: "admin/list_tous", component: TousTacheComponent },
@@ -45,6 +47,8 @@ const routes: Routes = [
       { path: "admin/list_facture", component: ListFactureComponent },
       { path: "admin/facture", component: FactureComponent },
       { path: "admin/parametre", component: ParametreComponent },
+      { path: "admin/chat", component: ChatComponent },
+      { path: "admin/group", component: GroupChatComponent },
 
       //client
       { path: "client/creer_tache", component: CreertacheComponent },

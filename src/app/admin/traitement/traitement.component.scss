@@ -1,7 +1,11 @@
 .traitement {
     margin: 1rem;
 
-    .header {}
+    .header {
+        span {
+            border-bottom: solid 2px gray;
+        }
+    }
 
     .liste {
         table {
@@ -21,5 +25,12 @@
                 }
             }
         }
+    }
+
+    .spanNonTache {
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
